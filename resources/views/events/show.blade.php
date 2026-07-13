@@ -119,6 +119,29 @@
             </div>
         @endif
 
+        <!-- Related Events -->
+        @if(isset($relatedEvents) && $relatedEvents->count() > 0)
+            <div class="mt-12">
+                <h2 class="text-2xl font-bold mb-6">Event Terkait</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    @foreach($relatedEvents as $relEvent)
+                        <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow">
+                            <figure>
+                                <img src="{{ $relEvent->image_url }}" alt="{{ $relEvent->judul }}" class="h-48 w-full object-cover" />
+                            </figure>
+                            <div class="card-body p-4">
+                                <h3 class="card-title text-lg truncate" title="{{ $relEvent->judul }}">{{ $relEvent->judul }}</h3>
+                                <p class="text-sm text-gray-500 mb-2">{{ $relEvent->tanggal_waktu->format('d M Y, H:i') }}</p>
+                                <div class="card-actions justify-end mt-4">
+                                    <a href="{{ route('events.show', $relEvent->id) }}" class="btn btn-primary btn-sm w-full">Lihat Detail</a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        @endif
+
         <!-- Back Button -->
         <div class="mt-8">
             <a href="{{ route('home') }}" class="btn btn-outline btn-wide">

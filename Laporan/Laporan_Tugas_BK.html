@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Laporan Tugas BK - Manajemen Event</title>
+  <style>
+    @page {
+      margin: 0;
+    }
+
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      color: #000;
+      line-height: 1.5;
+      background: #e5e5e5;
+      padding: 20px;
+    }
+
+    .document {
+      background: #fff;
+      max-width: 21cm;
+      min-height: 29.7cm;
+      margin: 0 auto;
+      padding: 2cm 2.5cm;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        padding: 0;
+      }
+
+      .document {
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+        max-width: none;
+        width: 100%;
+        min-height: auto;
+      }
+
+      .no-print {
+        display: none;
+      }
+
+      .page-break {
+        page-break-before: always;
+      }
+
+      .print-header {
+        display: block;
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        height: 2.5cm;
+        text-align: right;
+        padding: 1.5cm 2.5cm 0 0;
+        box-sizing: border-box;
+        color: #bbb;
+        font-weight: bold;
+        font-family: Arial, sans-serif;
+      }
+
+      .print-footer {
+        display: flex;
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        height: 2.5cm;
+        justify-content: flex-start;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 0 2.5cm;
+        color: #bbb;
+        font-weight: bold;
+        font-family: Arial, sans-serif;
+      }
+    }
+
+    .cover {
+      text-align: center;
+      margin-top: 5cm;
+      margin-bottom: 5cm;
+    }
+
+    .cover-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .cover-subtitle {
+      font-size: 18px;
+      margin-bottom: 40px;
+    }
+
+    .cover-info {
+      font-size: 16px;
+      margin-top: 50px;
+      text-align: center;
+    }
+    
+    .cover-info p {
+      margin: 5px 0;
+    }
+
+    h2 {
+      margin-top: 30px;
+      border-bottom: 2px solid #000;
+      padding-bottom: 5px;
+    }
+
+    h3 {
+      margin-top: 25px;
+    }
+
+    .placeholder-box {
+      width: 100%;
+      height: 300px;
+      border: 2px dashed #999;
+      background-color: #f9f9f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    pre {
+      background: #f4f4f4;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      overflow-x: auto;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 14px;
+    }
+
+    code {
+      font-family: Consolas, Monaco, monospace;
+      background: #f4f4f4;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+
+    .code-screenshot, .code-screenshot pre, .code-screenshot code { page-break-inside: auto !important; break-inside: auto !important; }
+  </style>
+</head>
+
+<body>
+  <div class="print-header">TUGAS BIMBINGAN KARIR 2026</div>
+  <div class="print-footer">IMPLEMENTASI FITUR MANAJEMEN EVENT</div>
+
+  <table class="print-table" style="width: 100%;">
+    <thead>
+      <tr>
+        <td>
+          <div style="height: 2.5cm;"></div>
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div class="document">
+            <div class="no-print alert" style="background-color: #fffbe6; border: 1px solid #ffe58f; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+              <p style="font-weight: bold; margin-top: 0;">Perhatian Sebelum Print PDF:</p>
+              <p>1. Tekan <b>Cmd + P</b> (Mac) atau Ctrl + P (Windows/Linux).</p>
+              <p>2. Pilih <b>Save as PDF</b> dan centang <b>Background graphics</b>.</p>
+              <p>3. Pastikan untuk menimpa elemen kotak abu-abu di bawah dengan *screenshot* aktual dari sistem Anda, baik dengan cara mengedit kode HTML-nya (mengganti elemen <code>&lt;div class="placeholder-box"&gt;</code> menjadi <code>&lt;img src="..."&gt;</code>) sebelum di-*print*.</p>
+            </div>
+
+            <div class="cover">
+              <h1 class="cover-title">LAPORAN TUGAS BIMBINGAN KARIR</h1>
+              <p class="cover-subtitle">IMPLEMENTASI FITUR MANAJEMEN EVENT (CRUD & CHALLENGES)</p>
+              <img src="logo_udinus.png" alt="Logo UDINUS" style="width: 250px; height: auto; margin: 40px auto; border: none; box-shadow: none; display: block;">
+
+              <div class="cover-info">
+                <p><strong>NAMA:</strong> MUHAMMAD DICKY AFRIZA</p>
+                <p><strong>NIM:</strong> A11.2024.16000</p>
+                <p><strong>KELOMPOK:</strong> A11.46RPL</p>
+              </div>
+            </div>
+            
+            <div class="page-break"></div>
+
+            <div>
+              <h2>1. SCREENSHOT & CARA PENGGUNAAN FITUR (CRUD & CHALLENGES)</h2>
+              
+              <h3>A. Halaman Daftar Event (Read, Search, Export, Bulk Delete, Clone)</h3>
+              <ul>
+                <li><strong>Cara Membaca Data & Pencarian (Read & Search):</strong> Buka menu "Manajemen Event" di sidebar admin. Semua event akan tampil dalam tabel. Anda dapat menggunakan kotak pencarian di bagian atas tabel untuk mencari event berdasarkan judul, serta menggunakan filter dropdown untuk menyaring berdasarkan Kategori atau Status (Upcoming, Ongoing, Completed).</li>
+                <li><strong>Cara Hapus Data (Delete):</strong> Klik tombol berlogo tempat sampah warna merah di kolom aksi untuk menghapus satu event secara spesifik. (Akan tertahan jika ada tiket yang terjual).</li>
+                <li><strong>Cara Export Excel (Challenge 1):</strong> Klik tombol "Export ke Excel" berwarna hijau di bagian kanan atas tabel. File <code>events.xlsx</code> akan otomatis terunduh berisi semua rekap data.</li>
+                <li><strong>Cara Bulk Delete (Challenge 2):</strong> Centang kotak <i>(checkbox)</i> pada sebelah kiri baris-baris event yang ingin dihapus, lalu klik tombol "Hapus Terpilih" berwarna merah di bagian atas tabel. Sistem akan menolak menghapus event jika sudah memiliki tiket terjual.</li>
+                <li><strong>Cara Clone Event (Challenge 4):</strong> Klik tombol hijau bertuliskan "Clone" pada baris event di kolom Aksi. Sebuah event duplikat akan langsung terbuat dengan imbuhan "(Copy)" pada judulnya, beserta semua konfigurasi tiket aslinya.</li>
+              </ul>
+              <img src="screenshots/daftar_event.png" alt="Daftar Event" style="width:100%; border:1px solid #ddd; border-radius:4px; margin-top:10px; margin-bottom:20px;">
+
+              <h3>B. Tambah Event & Dynamic Ticket Form (Create & Image Cropping)</h3>
+              <ul>
+                <li><strong>Cara Menambahkan Event Baru (Create):</strong> Klik tombol "Tambah Event Baru" di halaman daftar event. Isi judul, kategori, deskripsi, lokasi, dan tanggal.</li>
+                <li><strong>Cara Menambah Tiket Dinamis (Dynamic Ticket):</strong> Pada form yang sama di bagian bawah, klik tombol "+ Tambah Tiket". Anda bisa menambahkan lebih dari 1 tipe tiket sekaligus (contoh: Reguler, VIP, VVIP) beserta harga dan stoknya masing-masing. Tekan tanda silang merah untuk membatalkan tiket tertentu.</li>
+                <li><strong>Cara Memotong Gambar (Image Cropping - Challenge 3):</strong> Klik "Choose File" pada bagian Gambar Poster. Setelah memilih gambar, jendela <i>crop</i> interaktif akan muncul. Sesuaikan area gambar (rasio otomatis 16:9), lalu klik tombol "Gunakan Potongan Ini". Gambar otomatis disiapkan untuk *upload*. Setelah semua terisi, tekan "Simpan Event".</li>
+              </ul>
+              <img src="screenshots/tambah_event.png" alt="Tambah Event" style="width:100%; border:1px solid #ddd; border-radius:4px; margin-top:10px; margin-bottom:20px;">
+
+              <h3>C. Edit Event & Peringatan Penguncian (Update & Status History)</h3>
+              <ul>
+                <li><strong>Cara Mengedit Event (Update):</strong> Klik tombol berlogo pensil kuning di kolom aksi pada tabel event. Anda dapat mengubah isi judul, deskripsi, ataupun kategori.</li>
+                <li><strong>Cara Melihat Status History (Challenge 5):</strong> Riwayat akan otomatis tercatat secara *backend* setiap kali event baru dibuat atau ketika Anda mengedit "Tanggal & Waktu" sehingga rentang statusnya bergeser (misal: Upcoming -> Ongoing). Log ini tersimpan secara mandiri di tabel <code>event_status_histories</code>.</li>
+                <li><strong>Kondisi Penguncian Edit (Locking Mechanism):</strong> Apabila membuka halaman edit pada event yang tiketnya *sudah ada yang terjual (dibeli)*, maka kolom tiket dan "Tanggal & Waktu" akan berubah warna menjadi abu-abu (tidak bisa diubah) disertai kemunculan kotak peringatan warna kuning. Anda tidak diizinkan mengubah harga/kapasitas secara sembarangan saat tiket sudah *sold*.</li>
+              </ul>
+              <img src="screenshots/edit_event_terkunci.png" alt="Edit Event Terkunci" style="width:100%; border:1px solid #ddd; border-radius:4px; margin-top:10px; margin-bottom:20px;">
+
+              <h3>D. Halaman Publik (Tampilan User)</h3>
+              <ul>
+                <li><strong>Cara Melihat Detail Publik:</strong> Buka tautan publik event (misal klik judul event di halaman beranda utama). Halaman ini menampilkan detail acara, gambar poster hasil *crop*, dan pilihan tiket yang tersedia. Halaman ini juga memiliki section "Event Terkait" di bagian bawah untuk melihat rekomendasi event dengan kategori sejenis.</li>
+              </ul>
+              <img src="screenshots/detail_event_publik.png" alt="Detail Event Publik" style="width:100%; border:1px solid #ddd; border-radius:4px; margin-top:10px; margin-bottom:20px;">
+
+              <div class="page-break"></div>
+
+              <h2>2. KENDALA YANG DIALAMI</h2>
+              <ol>
+                <li><strong>Validasi Multi-dimensi pada Tiket Dinamis</strong>: Karena satu event bisa memiliki banyak tiket, memvalidasi input *array* dari *form* secara dinamis di sisi server cukup memakan waktu.</li>
+                <li><strong>Kondisi Penguncian Data (Locking)</strong>: Tantangan besar adalah mengatur agar <code>tanggal_waktu</code> dan tiket tidak bisa diubah ketika tiket sudah dipesan, bahkan apabila batasan pada antarmuka *frontend* berhasil dilewati (di-bypass).</li>
+                <li><strong>Integrasi <code>Cropper.js</code> dengan Unggahan Standar</strong>: Output pemotongan gambar berupa elemen *Canvas* atau data *Base64*. Kesulitannya adalah bagaimana mengirimkan potongan ini tanpa merombak logika pengontrol unggahan <code>multipart/form-data</code> yang sudah ada di Laravel.</li>
+                <li><strong>Pelacakan Riwayat Status (Status History)</strong>: Kolom status tidak berdiri sendiri, melainkan dihitung (*calculated field*) berdasarkan <code>tanggal_waktu</code> (Upcoming, Ongoing, Completed). Melacak riwayat dari sesuatu yang dihitung secara dinamis membutuhkan trik perbandingan yang teliti sebelum dan sesudah objek dimutakhirkan.</li>
+              </ol>
+
+              <h2>3. SOLUSI YANG DITEMUKAN</h2>
+              <ol>
+                <li><strong>EventFormRequest Khusus</strong>: Memanfaatkan form *request validation* di Laravel menggunakan notasi bintang (<code>tikets.*.harga</code>) yang mengecek otomatis tiap nilai di dalam *array* tiket yang dikirim oleh Javascript.</li>
+                <li><strong>Interceptor Menggunakan Helper <code>hasSales()</code></strong>: Solusi *backend* aman dicapai dengan menambahkan fungsi <code>hasSales()</code> pada Model. Pada metode <code>update()</code>, data tanggal akan secara eksplisit dibuang (<code>unset</code>) jika *event* sudah memiliki penjualan, terlepas dari apa pun nilai yang dikirim *user*.</li>
+                <li><strong>Manipulasi Objek <code>DataTransfer</code></strong>: Alih-alih mengubah Laravel, di sisi Javascript *canvas* dikonversi ke *Blob*, dijadikan entitas <code>File</code>, lalu dimasukkan ke struktur objek baru menggunakan konstruktor <code>DataTransfer()</code> untuk menimpa daftar file bawaan *browser* pada *input type file*. Laravel kemudian membaca gambar tersebut layaknya unggahan normal biasa.</li>
+                <li><strong>Kondisional Diff pada Model Lama & Baru</strong>: Untuk menyimpan riwayat status, Controller akan menangkap nilai <code>status</code> lama ke sebuah variabel sesaat sebelum <code>$event->update()</code> dijalankan. Apabila perubahan tanggal mengakibatkan nilai properti status baru tersebut berbeda, barulah log akan ditambahkan ke tabel <code>EventStatusHistory</code>.</li>
+              </ol>
+
+              <div class="page-break"></div>
+
+              <h2>4. REFERENSI KODINGAN UTAMA</h2>
+
+              <h3>A. Logic Penguncian (*Backend Bypass Prevention*)</h3>
+<pre><code>// App\Http\Controllers\EventController
+public function update(EventFormRequest $request, Event $event)
+{
+    $validated = $request->validated();
+    
+    // Solusi kendala penguncian tiket: Cegah dari sisi backend
+    if ($event->hasSales()) {
+        unset($validated['tanggal_waktu']);
+    }
+
+    $oldStatus = $event->status;
+    $event->update($validated);
+
+    // Pencatatan Status History 
+    if ($oldStatus !== $event->status) {
+        EventStatusHistory::create([
+            'event_id' => $event->id,
+            'status' => $event->status
+        ]);
+    }
+}
+</code></pre>
+
+              <h3>B. Penanganan Cropper.js ke File Input</h3>
+<pre><code>// resources/views/admin/events/create.blade.php
+btnCrop.addEventListener('click', function() {
+    if (cropper) {
+        cropper.getCroppedCanvas().toBlob((blob) => {
+            // Konversi canvas murni menjadi Blob, lalu File objek
+            const croppedFile = new File([blob], originalFileName, { type: "image/jpeg" });
+            
+            // Override input file dengan instansiasi DataTransfer JS
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(croppedFile);
+            document.getElementById('imageInput').files = dataTransfer.files;
+            
+            cropContainer.classList.add('hidden');
+        }, 'image/jpeg');
+    }
+});
+</code></pre>
+              
+              <h3>C. Implementasi Tantangan (Challenges: Export & Bulk Delete)</h3>
+<pre><code>// Export
+public function export()
+{
+    return Excel::download(new EventsExport, 'events.xlsx');
+}
+
+// Bulk Delete
+public function bulkDelete(Request $request)
+{
+    $events = auth()->user()->events()->whereIn('id', $request->ids)->get();
+    foreach ($events as $event) {
+        // Hanya menghapus yang aman untuk dihapus (tanpa penjualan)
+        if (!$event->hasSales()) { 
+            Storage::disk('public')->delete($event->gambar);
+            $event->delete();
+        }
+    }
+    return redirect()->back()->with('success', "Event terpilih dihapus.");
+}
+</code></pre>
+              
+              <div class="page-break"></div>
+
+              <h2>5. PENGUJIAN SISTEM (TESTING & VERIFICATION - POIN 7)</h2>
+              <p>Bagian ini membuktikan bahwa seluruh fungsionalitas CRUD dan proteksi aplikasi telah lulus tahap pengujian manual sesuai dengan instruksi <i>Poin 7: Testing & Verification</i>.</p>
+
+              <h3>Task 7.1: Create Event Test</h3>
+              <ul>
+                <li><strong>Aksi:</strong> Membuka <code>/admin/events/create</code>, mengisi form, mengunggah gambar, dan menambah 2 tiket.</li>
+                <li><strong>Hasil:</strong> [&#10003;] Data tersimpan di database, [&#10003;] Gambar berhasil di-upload, [&#10003;] Berhasil dialihkan ke halaman index dengan pesan sukses.</li>
+              </ul>
+              <img src="screenshots/tambah_event.png" alt="Bukti Create Event" style="width:100%; border:1px solid #ddd; border-radius:4px; margin-top:10px; margin-bottom:20px;">
+
+              <h3>Task 7.2: List & Filter Test</h3>
+              <ul>
+                <li><strong>Aksi:</strong> Membuka <code>/admin/events</code> dan mencoba fitur tabel.</li>
+                <li><strong>Hasil:</strong> [&#10003;] Pagination berjalan, [&#10003;] Pencarian judul berfungsi, [&#10003;] Filter kategori berfungsi, [&#10003;] Sort data berjalan, [&#10003;] Badge status (Upcoming/Ongoing) tampil akurat.</li>
+              </ul>
+
+              <h3>Task 7.3: Update Event Test</h3>
+              <ul>
+                <li><strong>Aksi:</strong> Membuka halaman edit event yang baru dibuat, memperbarui data dan menambah tiket baru.</li>
+                <li><strong>Hasil:</strong> [&#10003;] Form otomatis terisi data lama, [&#10003;] Tiket lama ter-load, [&#10003;] Data dan tiket baru sukses tersimpan setelah disubmit.</li>
+              </ul>
+
+              <h3>Task 7.4 & 7.5: Delete & Protected Event Test</h3>
+              <ul>
+                <li><strong>Aksi (7.4):</strong> Menghapus event biasa yang belum memiliki transaksi.</li>
+                <li><strong>Hasil (7.4):</strong> [&#10003;] Event berhasil terhapus dan sistem menampilkan pesan sukses.</li>
+                <li><strong>Aksi (7.5):</strong> Mensimulasikan penjualan tiket, lalu mencoba menghapus event yang terkunci (terproteksi).</li>
+                <li><strong>Hasil (7.5):</strong> [&#10003;] Event TIDAK terhapus, [&#10003;] Muncul pesan error larangan menghapus event dengan tiket terjual.</li>
+              </ul>
+              <img src="screenshots/delete_error.png" alt="Larangan Hapus Event Terjual" style="width:100%; border:1px solid #ddd; border-radius:4px; margin-top:10px; margin-bottom:20px;">
+
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>

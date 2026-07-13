@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Laporan UAS - Belajar Pintar</title>
+  <style>
+    @page {
+      margin: 0;
+    }
+
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      color: #000;
+      line-height: 1.5;
+      background: #e5e5e5;
+      padding: 20px;
+    }
+
+    .document {
+      background: #fff;
+      max-width: 21cm;
+      min-height: 29.7cm;
+      margin: 0 auto;
+      padding: 2cm 2.5cm;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        padding: 0;
+      }
+
+      .document {
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+        max-width: none;
+        width: 100%;
+        min-height: auto;
+      }
+
+      .no-print {
+        display: none;
+      }
+
+      .page-break {
+        page-break-before: always;
+      }
+
+      .print-header {
+        display: block;
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        height: 2.5cm;
+        text-align: right;
+        padding: 1.5cm 2.5cm 0 0;
+        box-sizing: border-box;
+        color: #bbb;
+        font-weight: bold;
+        font-family: Arial, sans-serif;
+      }
+
+      .print-footer {
+        display: flex;
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        height: 2.5cm;
+        justify-content: flex-start;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 0 2.5cm;
+        color: #bbb;
+        font-weight: bold;
+        font-family: Arial, sans-serif;
+      }
+    }
+
+    .cover {
+      text-align: center;
+      margin-top: 5cm;
+      margin-bottom: 5cm;
+    }
+
+    .cover-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .cover-subtitle {
+      font-size: 18px;
+      margin-bottom: 40px;
+    }
+
+    .cover-info {
+      font-size: 16px;
+      margin-top: 50px;
+      text-align: center;
+    }
+    
+    .cover-info p {
+      margin: 5px 0;
+    }
+    .code-screenshot, .code-screenshot pre, .code-screenshot code { page-break-inside: auto !important; break-inside: auto !important; }
+  </style>
+</head>
+
+<body>
+  <div class="print-header">UAS</div>
+  <div class="print-footer">PEMROGRAMAN SISI KLIEN</div>
+
+  <table class="print-table" style="width: 100%;">
+    <thead>
+      <tr>
+        <td>
+          <div style="height: 2.5cm;"></div>
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div class="document">
+            <div class="no-print alert" style="background-color: #fffbe6; border: 1px solid #ffe58f; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+              <p style="font-weight: bold; margin-top: 0;">Perhatian Sebelum Print PDF:</p>
+              <p>1. Jalankan server React dengan perintah <code>npm run dev</code> di dalam folder <code>UAS/belajar-pintar</code>.</p>
+              <p>2. Tekan <b>Cmd + P</b> (Mac) atau Ctrl + P (Windows/Linux).</p>
+              <p>3. Pilih <b>Save as PDF</b> dan centang <b>Background graphics</b>.</p>
+            </div>
+
+            <div class="cover">
+              <h1 class="cover-title">LAPORAN UAS</h1>
+              <p class="cover-subtitle">PENGEMBANGAN APLIKASI BELAJAR PINTAR</p>
+              <img src="logo_udinus.png" alt="Logo UDINUS" style="width: 250px; height: auto; margin: 40px auto; border: none; box-shadow: none; display: block;">
+
+              <div class="cover-info">
+                <p><strong>NAMA:</strong> MUHAMMAD DICKY AFRIZA</p>
+                <p><strong>NIM:</strong> A11.2024.16000</p>
+                <p><strong>KELOMPOK:</strong> A11.46RPL</p>
+              </div>
+            </div>
+            
+            <div class="page-break"></div>
+
+            <div>
+              <h2>IMPLEMENTASI DAN PENJELASAN PROYEK UAS</h2>
+              
+              <div style="background-color: #e6f7ff; border-color: #91d5ff; padding: 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #91d5ff;">
+                <h3 style="margin-top: 0; color: #0050b3;">📚 Deskripsi Proyek</h3>
+                <p style="margin-bottom: 0;">Aplikasi React JS "Belajar Pintar" versi lanjutan. Proyek ini dibangun dari awal menggunakan <strong>Vite</strong> dan <strong>React</strong> dengan penambahan fitur analitik, kuis interaktif, forum, gamifikasi (pencapaian), dan dashboard instruktur. Desain dirancang menggunakan <strong>Vanilla CSS murni</strong> (tanpa Tailwind) dengan gaya premium.</p>
+              </div>
+
+              <h3>1. Link Akses Live (Vercel) & Teknologi Utama</h3>
+              <p>Aplikasi React JS ini telah berhasil di-deploy dan dapat diakses secara <i>online</i> melalui tautan berikut: <br/> 
+              <a href="https://belajar-pintar-uas.vercel.app" target="_blank" style="color: #1890ff; font-weight: bold;">https://belajar-pintar-uas.vercel.app</a></p>
+              
+              <p>Tautan repositori GitHub (Source Code Khusus UAS) dapat diakses melalui: <br/> 
+              <a href="https://github.com/dickyafriza/belajar-pintar-uas" target="_blank" style="color: #1890ff; font-weight: bold;">https://github.com/dickyafriza/belajar-pintar-uas</a></p>
+              
+              <p>Aplikasi juga dapat dijalankan secara lokal dengan mengeksekusi <code>npm run dev</code> di dalam direktori <code>UAS/belajar-pintar</code>.</p>
+              <ul>
+                <li><strong>react-router-dom:</strong> Untuk navigasi multi-halaman (Dashboard, Kuis, Forum, dll).</li>
+                <li><strong>@tanstack/react-query:</strong> Digunakan sebagai standar <i>server state management</i> (mensimulasikan pengambilan API).</li>
+                <li><strong>recharts:</strong> Untuk implementasi analitik visual (grafik Garis, Batang, Pie, Area, dan Radar).</li>
+                <li><strong>lucide-react:</strong> Untuk koleksi ikon SVG berkualitas tinggi.</li>
+              </ul>
+
+              <h3>2. State Management</h3>
+              <p>Sistem ini menggunakan beberapa lapisan pengelolaan state:</p>
+              <ul>
+                <li><strong>Context API (<code>AppContext.jsx</code>):</strong> Mengelola status global seperti <i>Theme</i> (Mode Gelap/Terang interaktif) dan Profil Pengguna yang terautentikasi.</li>
+                <li><strong>Reducer Pattern (<code>quizReducer.js</code> & <code>forumReducer.js</code>):</strong> Digunakan untuk menangani status yang kompleks. Misalnya, saat mengerjakan kuis, state harus melacak waktu (timer), jawaban yang dipilih, status selesai, serta mode <i>review</i> (tandai ragu). Begitu juga di forum untuk mengelola upvote, pencarian, dan fitur penyematan.</li>
+              </ul>
+
+              <h3>3. Implementasi Fitur Halaman</h3>
+              <p>Terdapat lima halaman utama di sisi admin (/admin/*) yang telah diimplementasikan sepenuhnya:</p>
+              <ul>
+                <li><strong>Dashboard Analitik:</strong> Menampilkan ringkasan kognitif dengan Recharts yang memvisualisasikan waktu belajar, pencapaian kompetensi dalam format <i>Radar Chart</i>, serta riwayat pembelajaran.</li>
+                <li><strong>Sistem Quiz & Penilaian:</strong> Menggunakan struktur <i>Tabs</i> untuk membagi Mode Manajemen (Daftar Kuis), Mode Mengerjakan (dengan Timer & navigasi soal), serta Mode Analitik Kuis.</li>
+                <li><strong>Forum Diskusi:</strong> Thread berbasis komunitas dengan fitur Upvote, Tandai Terselesaikan, filter data, dan lencana reputasi kontributor.</li>
+                <li><strong>Sistem Pencapaian (Gamifikasi):</strong> Halaman interaktif yang menampilkan <i>Learning Path</i> visual serta koleksi lencana kelangkaan (Common, Rare, Epic, Legendary).</li>
+                <li><strong>Dashboard Instruktur:</strong> Overview kelas, pemantauan performa siswa, dan identifikasi sistematis terhadap siswa yang kesulitan.</li>
+              </ul>
+
+              <h3>4. Desain Premium Vanilla CSS</h3>
+              <p>Desain dibangun murni dari Vanilla CSS di file <code>src/index.css</code>. Ini mengadopsi <i>Design System</i> kustom yang mencakup:</p>
+              <ul>
+                <li><strong>Variabel CSS (CSS Custom Properties):</strong> Mengatur warna dasar, bayangan (shadow), kelengkungan (radius), dan waktu transisi.</li>
+                <li><strong>Tema Dinamis:</strong> Mode Gelap (Dark Mode) diaktifkan hanya dengan mengubah atribut <code>data-theme</code> pada <i>document root</i>, didukung oleh nilai variabel warna yang responsif.</li>
+                <li><strong>Glassmorphism:</strong> Komponen dengan latar transparan dan efek <i>backdrop blur</i> untuk antarmuka yang sangat premium.</li>
+              </ul>
+              
+              <h3>5. Data Akun Pengujian</h3>
+              <p>Gunakan kredensial berikut untuk melakukan login ke dalam aplikasi (demo):</p>
+              <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                <thead>
+                  <tr style="background-color: #f0f0f0; border: 1px solid #ddd;">
+                    <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Role</th>
+                    <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Email</th>
+                    <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Password</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Administrator / Instruktur</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><code>admin@belajarpintar.com</code></td>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><code>admin123</code></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              
+<div style="margin-top: 40px; font-family: 'Times New Roman', Times, serif; font-size: 16px;">
+  <h3 style="font-size: 18px; margin-bottom: 10px;">1. Login.jsx (Halaman Login)</h3>
+  <p style="text-align: justify; margin-bottom: 20px;">
+    <strong>Penjelasan:</strong> Halaman login menggunakan antarmuka interaktif dan form sederhana untuk melakukan autentikasi dengan akun admin demo. Jika kredensial diisi dengan sesuai, maka pengguna akan diarahkan ke halaman dashboard admin.
+  </p>
+  
+  <div class="code-screenshot" style="background: #1e1e1e; color: #d4d4d4; padding: 20px; border-radius: 8px;  font-family: 'Consolas', 'Courier New', monospace; font-size: 11px; margin: 15px 0; border: 1px solid #333; page-break-inside: auto; text-align: left; ">
+  <div style="border-bottom: 1px solid #333; margin-bottom: 10px; padding-bottom: 10px; color: #888; font-weight: bold;">// Screenshot Code: Login.jsx</div>
+  <pre style="margin: 0; white-space: pre-wrap;"><code>import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Eye, EyeOff } from 'lucide-react';
+
+import { useAppContext } from '../../context/AppContext';
+
+const Login = () =&gt; {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  const { setUser } = useAppContext();
+
+  const handleLogin = (e) =&gt; {
+    e.preventDefault();
+    if (username === 'mahasiswa' &amp;&amp; password === '12345') {
+      setUser({ 
+        name: 'Dicky Afriza', 
+        role: 'mahasiswa',
+        avatar: 'D',
+        reputation: 1500,
+        level: 5
+      });
+
+      navigate('/admin/dashboard');
+    } else if (username === 'admin' &amp;&amp; password === 'admin123') {
+      setUser({ 
+        name: 'Admin Instruktur', 
+        role: 'instruktur',
+        avatar: 'I',
+        reputation: 9999,
+        level: 99
+      });
+
+      navigate('/admin/dashboard');
+    } else {
+
+    }
+  };
+
+  return (
+    &lt;div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backgroundColor: 'var(--bg-primary)' }}&gt;
+      &lt;div style={{ textAlign: 'center', marginBottom: '2rem' }}&gt;
+        &lt;div style={{ 
+          width: '48px', height: '48px', 
+          backgroundColor: 'var(--primary-color)', 
+          color: 'white', 
+          borderRadius: '12px', 
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          fontSize: '1.25rem', fontWeight: 'bold', margin: '0 auto 1rem auto' 
+        }}&gt;
+          BP
+        &lt;/div&gt;
+        &lt;h1 style={{ fontSize: '1.5rem', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '0.25rem' }}&gt;Belajar Pintar&lt;/h1&gt;
+        &lt;p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}&gt;Platform Pembelajaran Digital Mahasiswa&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div className="card" style={{ width: '100%', maxWidth: '400px', padding: '2rem' }}&gt;
+        &lt;h2 style={{ fontSize: '1.125rem', fontWeight: '600', marginBottom: '1.5rem', color: 'var(--text-primary)' }}&gt;Masuk ke Akun&lt;/h2&gt;
+        
+        &lt;form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}&gt;
+          &lt;div className="input-group"&gt;
+            &lt;label className="input-label"&gt;Username&lt;/label&gt;
+            &lt;input 
+              type="text" 
+              className="input-field" 
+              placeholder="Masukkan username" 
+              value={username}
+              onChange={(e) =&gt; setUsername(e.target.value)}
+              required 
+            /&gt;
+          &lt;/div&gt;
+
+          &lt;div className="input-group"&gt;
+            &lt;label className="input-label"&gt;Password&lt;/label&gt;
+            &lt;div style={{ position: 'relative' }}&gt;
+              &lt;input 
+                type={showPassword ? 'text' : 'password'} 
+                className="input-field" 
+                style={{ width: '100%', paddingRight: '2.5rem' }}
+                placeholder="Masukkan password" 
+                value={password}
+                onChange={(e) =&gt; setPassword(e.target.value)}
+                required 
+              /&gt;
+              &lt;button 
+                type="button"
+                onClick={() =&gt; setShowPassword(!showPassword)}
+                style={{ 
+                  position: 'absolute', right: '0.75rem', top: '50%', transform: 'translateY(-50%)',
+                  background: 'none', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer'
+                }}
+              &gt;
+                {showPassword ? &lt;EyeOff size={18} /&gt; : &lt;Eye size={18} /&gt;}
+              &lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;button type="submit" className="btn btn-primary" style={{ marginTop: '0.5rem', width: '100%' }}&gt;
+            Masuk
+          &lt;/button&gt;
+        &lt;/form&gt;
+
+        &lt;div style={{ 
+          marginTop: '1.5rem', 
+          padding: '1rem', 
+          backgroundColor: 'var(--primary-light)', 
+          borderRadius: 'var(--radius-md)',
+          fontSize: '0.75rem',
+          color: 'var(--primary-hover)'
+        }}&gt;
+          &lt;p style={{ fontWeight: '600', marginBottom: '0.25rem' }}&gt;💡 Demo Login:&lt;/p&gt;
+          &lt;p&gt;Username: &lt;strong&gt;mahasiswa&lt;/strong&gt; | Password: &lt;strong&gt;12345&lt;/strong&gt;&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};
+
+export default Login;
+</code></pre>
+</div>
+  <div style="text-align: center; margin-bottom: 40px;">
+    <img src="../UAS/belajar-pintar/screenshots/ss-login.png" style="max-width: 100%; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" alt="Login UI" />
+    <p style="font-style: italic; margin-top: 15px; color: #444;">Gambar 1. Halaman Login Belajar Pintar</p>
+  </div>
+
+  <h3 style="font-size: 18px; margin-bottom: 10px;">2. Dashboard.jsx (Dashboard Analitik)</h3>
+  <p style="text-align: justify; margin-bottom: 20px;">
+    <strong>Penjelasan:</strong> Komponen utama yang menampilkan berbagai metrik dan statistik pembelajaran. Menggunakan *library* Recharts untuk merender grafik secara visual (Garis, Batang, Pie, Area, dan Radar). Menampilkan akumulasi waktu belajar dan progres pengguna secara komprehensif.
+  </p>
+  
+  <div class="code-screenshot" style="background: #1e1e1e; color: #d4d4d4; padding: 20px; border-radius: 8px;  font-family: 'Consolas', 'Courier New', monospace; font-size: 11px; margin: 15px 0; border: 1px solid #333; page-break-inside: auto; text-align: left; ">
+  <div style="border-bottom: 1px solid #333; margin-bottom: 10px; padding-bottom: 10px; color: #888; font-weight: bold;">// Screenshot Code: Dashboard.jsx</div>
+  <pre style="margin: 0; white-space: pre-wrap;"><code>import React from 'react';
+import { 
+  LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, 
+  AreaChart, Area, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar,
+  XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer 
+} from 'recharts';
+import { useNavigate } from 'react-router-dom';
+import { useAppContext } from '../../context/AppContext';
+import { useModules, useAchievements } from '../../hooks/useAppData';
+import { RefreshCw } from 'lucide-react';
+
+const Dashboard = () =&gt; {
+  const { user } = useAppContext();
+  const { data: modules, isLoading: isLoadingModules } = useModules();
+  const { data: achievements, isLoading: isLoadingAchievements } = useAchievements();
+  const navigate = useNavigate();
+
+  if (isLoadingModules || isLoadingAchievements) {
+    return (
+      &lt;div className="flex items-center justify-center h-64 animate-fade-in"&gt;
+        &lt;RefreshCw size={32} className="animate-spin text-primary" /&gt;
+        &lt;span className="ml-3 text-lg font-medium text-primary"&gt;Memuat Data Dashboard...&lt;/span&gt;
+      &lt;/div&gt;
+    );
+  }
+
+  const safeModules = modules || [];
+  const safeAchievements = achievements || [];
+
+  // Process Data for Summaries
+  const totalModules = safeModules.length;
+  const completedModules = safeModules.filter(m =&gt; m.status === 'Selesai').length;
+  const totalPoints = safeAchievements.filter(a =&gt; a.isUnlocked).reduce((acc, a) =&gt; acc + a.points, 0);
+
+  // Chart Data
+  const lineData = [
+    { name: 'Minggu 1', progress: 20 },
+    { name: 'Minggu 2', progress: 45 },
+    { name: 'Minggu 3', progress: 75 },
+    { name: 'Minggu 4', progress: 100 },
+  ];
+
+  const categoryTime = safeModules.reduce((acc, m) =&gt; {
+    acc[m.category] = (acc[m.category] || 0) + m.duration;
+    return acc;
+  }, {});
+  
+  const barData = Object.keys(categoryTime).map(key =&gt; ({
+    category: key,
+    hours: Math.round(categoryTime[key] / 60 * 10) / 10
+  }));
+
+  const pieData = [
+    { name: 'Selesai', value: completedModules },
+    { name: 'Sedang Berjalan', value: safeModules.filter(m =&gt; m.status === 'Sedang Berjalan').length },
+    { name: 'Belum Dimulai', value: safeModules.filter(m =&gt; m.status === 'Belum Dimulai').length }
+  ];
+  const COLORS = ['#10b981', '#3b82f6', '#94a3b8'];
+
+  const areaData = [
+    { name: 'Sen', hours: 1.5 }, { name: 'Sel', hours: 3 },
+    { name: 'Rab', hours: 2.5 }, { name: 'Kam', hours: 4.5 },
+    { name: 'Jum', hours: 5.5 }, { name: 'Sab', hours: 7 },
+    { name: 'Min', hours: 8.5 },
+  ];
+
+  const radarData = [
+    { subject: 'Programming', A: 120, fullMark: 150 },
+    { subject: 'Database', A: 98, fullMark: 150 },
+    { subject: 'Network', A: 86, fullMark: 150 },
+    { subject: 'Design', A: 99, fullMark: 150 },
+    { subject: 'Soft Skills', A: 85, fullMark: 150 },
+  ];
+
+  const getGreeting = () =&gt; {
+    const hour = new Date().getHours();
+    if (hour &lt; 12) return 'Selamat Pagi';
+    if (hour &lt; 15) return 'Selamat Siang';
+    if (hour &lt; 18) return 'Selamat Sore';
+    return 'Selamat Malam';
+  };
+
+  const progressPercent = Math.round((completedModules / totalModules) * 100) || 0;
+
+  return (
+    &lt;div className="animate-fade-in"&gt;
+      &lt;div className="mb-6"&gt;
+        &lt;h2 className="text-xl font-bold text-primary"&gt;{getGreeting()}, {user.name}&lt;/h2&gt;
+        &lt;p className="text-muted text-sm"&gt;Berikut adalah data-data yang dapat Anda akses.&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div className="grid-4 mb-6"&gt;
+        &lt;div className="card"&gt;
+          &lt;p className="text-sm font-medium mb-2 text-muted"&gt;Progress Keseluruhan&lt;/p&gt;
+          &lt;h3 className="text-2xl font-bold mb-2"&gt;{progressPercent}%&lt;/h3&gt;
+          &lt;div className="progress-bg mb-2"&gt;
+            &lt;div className="progress-fill" style={{ width: `${progressPercent}%` }}&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;p className="text-xs text-muted"&gt;{completedModules} dari {totalModules} modul selesai&lt;/p&gt;
+        &lt;/div&gt;
+        
+        &lt;div className="card"&gt;
+          &lt;p className="text-sm font-medium mb-2 text-muted"&gt;Total Modul&lt;/p&gt;
+          &lt;h3 className="text-2xl font-bold mb-2 text-primary"&gt;{totalModules}&lt;/h3&gt;
+          &lt;p className="text-xs text-muted"&gt;Modul tersedia&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;div className="card"&gt;
+          &lt;p className="text-sm font-medium mb-2 text-muted"&gt;Modul Selesai&lt;/p&gt;
+          &lt;h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--success-color)' }}&gt;{completedModules}&lt;/h3&gt;
+          &lt;p className="text-xs text-muted"&gt;Sudah ditandai selesai&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;div className="card"&gt;
+          &lt;p className="text-sm font-medium mb-2 text-muted"&gt;Belum Selesai&lt;/p&gt;
+          &lt;h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--warning-color)' }}&gt;{totalModules - completedModules}&lt;/h3&gt;
+          &lt;p className="text-xs text-muted"&gt;Modul belum diselesaikan&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div className="grid-2 mb-6" style={{ gridTemplateColumns: '1.5fr 1fr' }}&gt;
+        &lt;div className="card"&gt;
+          &lt;div className="card-header" style={{ paddingBottom: '0.5rem', marginBottom: '1rem' }}&gt;
+            &lt;h3 className="card-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}&gt;
+              &lt;span role="img" aria-label="checklist"&gt;📝&lt;/span&gt; Checklist Modul
+            &lt;/h3&gt;
+            &lt;p className="text-xs text-muted mt-1"&gt;Pantau progress penyelesaian modul Anda&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div className="flex flex-col gap-2"&gt;
+            {modules.map((m, idx) =&gt; (
+              &lt;div key={idx} className="flex items-center gap-3" style={{ padding: '0.5rem 0' }}&gt;
+                &lt;div style={{ 
+                  width: '18px', height: '18px', borderRadius: '50%', 
+                  border: m.status === 'Selesai' ? '5px solid var(--primary-color)' : '2px solid var(--border-color)',
+                  backgroundColor: 'white'
+                }}&gt;&lt;/div&gt;
+                &lt;span className="text-sm font-medium" style={{ color: m.status === 'Selesai' ? 'var(--text-secondary)' : 'var(--text-primary)', textDecoration: m.status === 'Selesai' ? 'line-through' : 'none' }}&gt;
+                  {m.title}
+                &lt;/span&gt;
+              &lt;/div&gt;
+            ))}
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div className="card"&gt;
+          &lt;div className="card-header" style={{ paddingBottom: '0.5rem', marginBottom: '1rem' }}&gt;
+            &lt;h3 className="card-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}&gt;
+              &lt;span role="img" aria-label="rocket"&gt;🚀&lt;/span&gt; Aksi Cepat
+            &lt;/h3&gt;
+            &lt;p className="text-xs text-muted mt-1"&gt;Akses fitur yang sering digunakan&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div className="flex flex-col gap-3"&gt;
+            &lt;button className="btn btn-primary w-full" onClick={() =&gt; navigate('/admin/quiz')}&gt;
+              Lanjutkan Belajar
+            &lt;/button&gt;
+            &lt;button className="btn btn-outline w-full" style={{ backgroundColor: 'var(--bg-secondary)' }} onClick={() =&gt; navigate('/admin/quiz')}&gt;
+              Lihat Semua Modul
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;h3 className="text-lg font-bold mb-4 mt-8"&gt;Analitik Lanjutan (UAS)&lt;/h3&gt;
+
+      &lt;div className="grid-3 mb-6"&gt;
+        &lt;div className="card" style={{ gridColumn: 'span 2' }}&gt;
+          &lt;div className="card-header"&gt;
+            &lt;h3 className="card-title"&gt;Progress Belajar Bulanan&lt;/h3&gt;
+          &lt;/div&gt;
+          &lt;div style={{ width: '100%', height: 300 }}&gt;
+            &lt;ResponsiveContainer&gt;
+              &lt;LineChart data={lineData} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}&gt;
+                &lt;CartesianGrid strokeDasharray="3 3" stroke="var(--border-color)" /&gt;
+                &lt;XAxis dataKey="name" stroke="var(--text-secondary)" /&gt;
+                &lt;YAxis stroke="var(--text-secondary)" /&gt;
+                &lt;Tooltip contentStyle={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-color)', color: 'var(--text-primary)' }} /&gt;
+                &lt;Line type="monotone" dataKey="progress" stroke="var(--primary-color)" strokeWidth={3} dot={{ r: 6 }} activeDot={{ r: 8 }} /&gt;
+              &lt;/LineChart&gt;
+            &lt;/ResponsiveContainer&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div className="card"&gt;
+          &lt;div className="card-header"&gt;
+            &lt;h3 className="card-title"&gt;Distribusi Modul&lt;/h3&gt;
+          &lt;/div&gt;
+          &lt;div style={{ width: '100%', height: 300 }}&gt;
+            &lt;ResponsiveContainer&gt;
+              &lt;PieChart&gt;
+                &lt;Pie
+                  data={pieData}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={60}
+                  outerRadius={90}
+                  paddingAngle={5}
+                  dataKey="value"
+                &gt;
+                  {pieData.map((entry, index) =&gt; (
+                    &lt;Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} /&gt;
+                  ))}
+                &lt;/Pie&gt;
+                &lt;Tooltip contentStyle={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }} /&gt;
+                &lt;Legend verticalAlign="bottom" height={36}/&gt;
+              &lt;/PieChart&gt;
+            &lt;/ResponsiveContainer&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div className="grid-2 mb-6"&gt;
+        &lt;div className="card"&gt;
+          &lt;div className="card-header"&gt;
+            &lt;h3 className="card-title"&gt;Waktu Belajar per Kategori (Jam)&lt;/h3&gt;
+          &lt;/div&gt;
+          &lt;div style={{ width: '100%', height: 250 }}&gt;
+            &lt;ResponsiveContainer&gt;
+              &lt;BarChart data={barData}&gt;
+                &lt;CartesianGrid strokeDasharray="3 3" stroke="var(--border-color)" vertical={false} /&gt;
+                &lt;XAxis dataKey="category" stroke="var(--text-secondary)" /&gt;
+                &lt;YAxis stroke="var(--text-secondary)" /&gt;
+                &lt;Tooltip cursor={{fill: 'var(--primary-light)'}} contentStyle={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }} /&gt;
+                &lt;Bar dataKey="hours" fill="var(--primary-color)" radius={[4, 4, 0, 0]} /&gt;
+              &lt;/BarChart&gt;
+            &lt;/ResponsiveContainer&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div className="card"&gt;
+          &lt;div className="card-header"&gt;
+            &lt;h3 className="card-title"&gt;Akumulasi Jam Belajar (Mingguan)&lt;/h3&gt;
+          &lt;/div&gt;
+          &lt;div style={{ width: '100%', height: 250 }}&gt;
+            &lt;ResponsiveContainer&gt;
+              &lt;AreaChart data={areaData}&gt;
+                &lt;CartesianGrid strokeDasharray="3 3" stroke="var(--border-color)" /&gt;
+                &lt;XAxis dataKey="name" stroke="var(--text-secondary)" /&gt;
+                &lt;YAxis stroke="var(--text-secondary)" /&gt;
+                &lt;Tooltip contentStyle={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }} /&gt;
+                &lt;Area type="monotone" dataKey="hours" stroke="#8b5cf6" fill="#8b5cf6" fillOpacity={0.2} /&gt;
+              &lt;/AreaChart&gt;
+            &lt;/ResponsiveContainer&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};
+
+export default Dashboard;
+</code></pre>
+</div>
+  <div style="text-align: center; margin-bottom: 40px;">
+    <img src="../UAS/belajar-pintar/screenshots/ss-dashboard.png" style="max-width: 100%; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" alt="Dashboard UI" />
+    <p style="font-style: italic; margin-top: 15px; color: #444;">Gambar 2. Dashboard Analitik Pembelajaran dengan Visualisasi Recharts</p>
+  </div>
+
+  <h3 style="font-size: 18px; margin-bottom: 10px;">3. Quiz.jsx (Sistem Kuis dan Penilaian)</h3>
+  <p style="text-align: justify; margin-bottom: 20px;">
+    <strong>Penjelasan:</strong> Halaman yang mengelola sistem kuis interaktif dengan tiga mode: Manajemen Kuis, Mengerjakan Kuis (dengan fitur timer batas waktu), dan Analitik Kuis. Status serta logika pengerjaan dikelola menggunakan <code>useReducer</code>.
+  </p>
+  
+  <div class="code-screenshot" style="background: #1e1e1e; color: #d4d4d4; padding: 20px; border-radius: 8px;  font-family: 'Consolas', 'Courier New', monospace; font-size: 11px; margin: 15px 0; border: 1px solid #333; page-break-inside: auto; text-align: left; ">
+  <div style="border-bottom: 1px solid #333; margin-bottom: 10px; padding-bottom: 10px; color: #888; font-weight: bold;">// Screenshot Code: Quiz.jsx</div>
+  <pre style="margin: 0; white-space: pre-wrap;"><code>import React, { useState, useReducer, useEffect } from 'react';
+import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { Clock, CheckCircle, AlertCircle, Edit, PlayCircle, BarChart2, ChevronDown, BookOpen, RefreshCw, ArrowLeft } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import { useModules, useQuizzes } from '../../hooks/useAppData';
+import { quizReducer, initialQuizState } from '../../reducers/quizReducer';
+
+const Quiz = () =&gt; {
+  const { data: modules, toggleModuleStatus, isLoading: loadingModules, isMutating: mutatingModules } = useModules();
+  const { data: quizzes, submitQuizResult, isLoading: loadingQuizzes } = useQuizzes();
+  const [activeTab, setActiveTab] = useState('modul');
+  const [quizState, dispatch] = useReducer(quizReducer, initialQuizState);
+  const [expandedModule, setExpandedModule] = useState(null);
+  const [readingModule, setReadingModule] = useState(null);
+
+  useEffect(() =&gt; {
+    let timer;
+    if (quizState.status === 'active' &amp;&amp; quizState.timeLeft &gt; 0) {
+      timer = setInterval(() =&gt; dispatch({ type: 'TICK_TIMER' }), 1000);
+    }
+    return () =&gt; clearInterval(timer);
+  }, [quizState.status, quizState.timeLeft]);
+
+  if (loadingModules || loadingQuizzes) {
+    return (
+      &lt;div className="flex items-center justify-center h-64 animate-fade-in"&gt;
+        &lt;RefreshCw size={32} className="animate-spin text-primary" /&gt;
+        &lt;span className="ml-3 text-lg font-medium text-primary"&gt;Memuat Data Quiz...&lt;/span&gt;
+      &lt;/div&gt;
+    );
+  }
+
+  const safeModules = modules || [];
+  const safeQuizzes = quizzes || [];
+
+  const completedModules = safeModules.filter(m =&gt; m.status === 'Selesai').length;
+  const progressPercent = Math.round((completedModules / Math.max(safeModules.length, 1)) * 100) || 0;
+
+  // Tab: Modul Kelas (Sesuai UTS)
+  const renderModul = () =&gt; (
+    &lt;div className="animate-fade-in"&gt;
+      &lt;div className="mb-6"&gt;
+        &lt;h2 className="text-xl font-bold text-primary"&gt;Modul Kelas&lt;/h2&gt;
+        &lt;p className="text-muted text-sm"&gt;Pelajari setiap modul dan tandai selesai untuk melacak progresmu.&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div className="card mb-6"&gt;
+        &lt;p className="text-sm font-medium mb-2 text-muted"&gt;Progress Keseluruhan&lt;/p&gt;
+        &lt;h3 className="text-2xl font-bold mb-2"&gt;{progressPercent}%&lt;/h3&gt;
+        &lt;div className="progress-bg mb-2"&gt;
+          &lt;div className="progress-fill" style={{ width: `${progressPercent}%` }}&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;p className="text-xs text-muted"&gt;{progressPercent}% materi telah diselesaikan&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div className="flex flex-col gap-3"&gt;
+        {safeModules.map((m, idx) =&gt; (
+          &lt;div key={idx} className="card" style={{ padding: '0' }}&gt;
+            &lt;button 
+              className="w-full flex justify-between items-center" 
+              style={{ padding: '1rem 1.5rem', background: 'none', border: 'none', cursor: 'pointer' }}
+              onClick={() =&gt; setExpandedModule(expandedModule === idx ? null : idx)}
+            &gt;
+              &lt;div className="flex items-center gap-4"&gt;
+                &lt;div style={{ 
+                  width: '32px', height: '32px', borderRadius: '50%', 
+                  backgroundColor: m.status === 'Selesai' ? 'var(--success-color)' : 'var(--bg-primary)', 
+                  color: m.status === 'Selesai' ? 'white' : 'var(--text-secondary)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontWeight: 'bold', fontSize: '0.875rem'
+                }}&gt;
+                  {m.status === 'Selesai' ? &lt;CheckCircle size={16} /&gt; : idx + 1}
+                &lt;/div&gt;
+                &lt;span className="font-medium" style={{ fontSize: '1rem', color: m.status === 'Selesai' ? 'var(--text-secondary)' : 'var(--text-primary)', textDecoration: m.status === 'Selesai' ? 'line-through' : 'none' }}&gt;{m.title}&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;ChevronDown size={20} className="text-muted" style={{ transform: expandedModule === idx ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} /&gt;
+            &lt;/button&gt;
+            {expandedModule === idx &amp;&amp; (
+              &lt;div style={{ padding: '1rem 1.5rem', borderTop: '1px solid var(--border-color)', backgroundColor: 'var(--bg-primary)' }}&gt;
+                &lt;p className="text-sm text-muted mb-4"&gt;{m.description || `Materi lengkap untuk ${m.title}`}&lt;/p&gt;
+                &lt;div className="flex gap-3"&gt;
+                  &lt;button className="btn btn-primary btn-sm" onClick={() =&gt; setReadingModule(m)}&gt;Mulai Belajar&lt;/button&gt;
+                  &lt;button className="btn btn-outline btn-sm" style={{ backgroundColor: 'white', opacity: mutatingModules ? 0.7 : 1 }} disabled={mutatingModules} onClick={() =&gt; toggleModuleStatus(m.id)}&gt;
+                    {m.status === 'Selesai' ? 'Batalkan Selesai' : 'Tandai Selesai'}
+                  &lt;/button&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            )}
+          &lt;/div&gt;
+        ))}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+
+  // Tab: Manajemen Quiz
+  const renderManajemen = () =&gt; (
+    &lt;div className="grid-cards animate-fade-in mt-4"&gt;
+      {safeQuizzes.slice(0, 8).map(quiz =&gt; (
+        &lt;div key={quiz.id} className="card flex-col flex gap-4"&gt;
+          {quiz.image &amp;&amp; (
+            &lt;div className="w-full h-32 rounded-md overflow-hidden mb-2 shadow-sm"&gt;
+              &lt;img src={quiz.image} alt={quiz.title} className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" /&gt;
+            &lt;/div&gt;
+          )}
+          &lt;div className="flex justify-between items-start"&gt;
+            &lt;div&gt;
+              &lt;span className={`badge ${quiz.status === 'completed' ? 'badge-success' : 'badge-warning'}`}&gt;
+                {quiz.status === 'completed' ? 'Selesai' : 'Belum'}
+              &lt;/span&gt;
+              &lt;h3 className="font-bold text-lg mt-2"&gt;{quiz.title}&lt;/h3&gt;
+              &lt;p className="text-sm text-muted mb-2"&gt;{quiz.questionsCount} Soal • {quiz.type}&lt;/p&gt;
+              {quiz.description &amp;&amp; &lt;p className="text-xs text-muted line-clamp-2 leading-relaxed"&gt;{quiz.description}&lt;/p&gt;}
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div className="flex justify-between items-center mt-auto border-t border-color-light pt-4"&gt;
+            &lt;div className="text-sm"&gt;
+              Waktu: &lt;span className="font-bold"&gt;{quiz.timeLimit}m&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;button 
+              className="btn btn-primary btn-sm"
+              onClick={() =&gt; {
+                dispatch({ type: 'START_QUIZ', payload: quiz });
+                setActiveTab('mengerjakan');
+              }}
+            &gt;
+              &lt;PlayCircle size={16} /&gt; {quiz.status === 'completed' ? 'Ulangi' : 'Mulai'}
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  );
+
+  // Tab: Mengerjakan Quiz
+  const renderMengerjakan = () =&gt; {
+    if (quizState.status === 'idle') {
+      return (
+        &lt;div className="card flex flex-col items-center justify-center py-12 animate-fade-in text-center mt-4"&gt;
+          &lt;CheckCircle size={48} className="text-muted mb-4" /&gt;
+          &lt;h2 className="text-xl font-bold mb-2"&gt;Pilih Quiz untuk Dikerjakan&lt;/h2&gt;
+          &lt;p className="text-muted"&gt;Pilih dari tab Ujian &amp; Quiz.&lt;/p&gt;
+        &lt;/div&gt;
+      );
+    }
+
+    if (quizState.status === 'submitted') {
+      return (
+        &lt;div className="card flex flex-col items-center justify-center py-12 animate-fade-in text-center mt-4"&gt;
+          &lt;div style={{ color: 'var(--warning-color)', marginBottom: '1rem' }}&gt;&lt;CheckCircle size={64} /&gt;&lt;/div&gt;
+          &lt;h2 className="text-2xl font-bold mb-2"&gt;Quiz Selesai!&lt;/h2&gt;
+          &lt;p className="text-muted mb-6"&gt;Jawaban Anda telah disubmit.&lt;/p&gt;
+          &lt;button className="btn btn-primary" onClick={() =&gt; dispatch({ type: 'RESET' })}&gt;Kembali&lt;/button&gt;
+        &lt;/div&gt;
+      );
+    }
+
+    return (
+      &lt;div className="animate-fade-in mt-4"&gt;
+        &lt;div className="card mb-6 flex justify-between items-center" style={{ backgroundColor: 'var(--primary-light)' }}&gt;
+          &lt;div&gt;
+            &lt;h2 className="text-xl font-bold text-primary"&gt;{quizState.currentQuiz.title}&lt;/h2&gt;
+            &lt;p className="text-sm"&gt;Soal 1 dari {quizState.currentQuiz.questionsCount}&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div className="flex items-center gap-2 font-bold text-lg px-4 py-2" style={{ backgroundColor: 'white', color: 'var(--danger-color)', borderRadius: '99px', border: '1px solid var(--border-color)' }}&gt;
+            &lt;Clock size={20} /&gt;
+            {Math.floor(quizState.timeLeft / 60)}:{(quizState.timeLeft % 60).toString().padStart(2, '0')}
+          &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div className="card mb-6"&gt;
+          &lt;div className="mb-6 pb-6" style={{ borderBottom: '1px solid var(--border-color)' }}&gt;
+            &lt;h3 className="text-lg font-medium mb-4"&gt;1. Soal Evaluasi untuk {quizState.currentQuiz.title}&lt;/h3&gt;
+            &lt;p className="text-sm text-muted mb-4"&gt;Pilih jawaban yang paling tepat berdasarkan pemahaman Anda dari materi ini.&lt;/p&gt;
+            &lt;div className="flex flex-col gap-3"&gt;
+              {['A. Jawaban Pertama', 'B. Jawaban Kedua', 'C. Jawaban Ketiga', 'D. Jawaban Keempat'].map((opt, i) =&gt; (
+                &lt;label key={i} className="flex items-center gap-3 p-3 cursor-pointer" style={{ border: '1px solid var(--border-color)', borderRadius: 'var(--radius-md)' }}&gt;
+                  &lt;input type="radio" name="q1" className="cursor-pointer" /&gt;
+                  &lt;span&gt;{opt}&lt;/span&gt;
+                &lt;/label&gt;
+              ))}
+            &lt;/div&gt;
+          &lt;/div&gt;
+          
+          &lt;div className="flex justify-between items-center"&gt;
+            &lt;button className="btn btn-outline" disabled&gt;Sebelumnya&lt;/button&gt;
+            &lt;button className="btn btn-outline flex items-center gap-2" onClick={() =&gt; dispatch({type: 'TOGGLE_REVIEW'})}&gt;
+              &lt;AlertCircle size={16} style={{ color: quizState.isReviewing ? 'var(--warning-color)' : 'inherit' }} /&gt; 
+              {quizState.isReviewing ? 'Ditandai Ragu' : 'Tandai Ragu'}
+            &lt;/button&gt;
+            &lt;button className="btn btn-primary" onClick={() =&gt; {
+              dispatch({type: 'SUBMIT_QUIZ'});
+              submitQuizResult(quizState.currentQuiz.id, Math.floor(Math.random() * 40) + 60); // random passing score for demo
+            }}&gt;Submit Quiz&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    );
+  };
+
+  // Tab: Analitik Quiz
+  const renderAnalitik = () =&gt; {
+    const historyData = safeQuizzes.filter(q =&gt; q.score).map((q, i) =&gt; ({
+      name: `Q${i+1}`,
+      score: q.score,
+      passing: q.passingScore
+    }));
+    
+    const accuracyData = [
+      { topic: 'Hooks', acc: 85 },
+      { topic: 'State', acc: 70 },
+      { topic: 'Props', acc: 95 },
+      { topic: 'Effect', acc: 60 },
+      { topic: 'Router', acc: 80 },
+    ];
+
+    return (
+      &lt;div className="grid-2 animate-fade-in mt-4"&gt;
+        &lt;div className="card"&gt;
+          &lt;div className="card-header"&gt;
+            &lt;h3 className="card-title"&gt;Riwayat Nilai Quiz&lt;/h3&gt;
+          &lt;/div&gt;
+          &lt;div style={{ width: '100%', height: 300 }}&gt;
+            &lt;ResponsiveContainer&gt;
+              &lt;LineChart data={historyData}&gt;
+                &lt;CartesianGrid strokeDasharray="3 3" stroke="var(--border-color)" /&gt;
+                &lt;XAxis dataKey="name" stroke="var(--text-secondary)" /&gt;
+                &lt;YAxis stroke="var(--text-secondary)" /&gt;
+                &lt;Tooltip contentStyle={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }} /&gt;
+                &lt;Line type="monotone" dataKey="score" stroke="var(--primary-color)" strokeWidth={3} /&gt;
+                &lt;Line type="step" dataKey="passing" stroke="var(--danger-color)" strokeDasharray="5 5" /&gt;
+              &lt;/LineChart&gt;
+            &lt;/ResponsiveContainer&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div className="card"&gt;
+          &lt;div className="card-header"&gt;
+            &lt;h3 className="card-title"&gt;Akurasi per Topik (%)&lt;/h3&gt;
+          &lt;/div&gt;
+          &lt;div style={{ width: '100%', height: 300 }}&gt;
+            &lt;ResponsiveContainer&gt;
+              &lt;BarChart data={accuracyData} layout="vertical"&gt;
+                &lt;CartesianGrid strokeDasharray="3 3" stroke="var(--border-color)" horizontal={false} /&gt;
+                &lt;XAxis type="number" domain={[0, 100]} stroke="var(--text-secondary)" /&gt;
+                &lt;YAxis dataKey="topic" type="category" stroke="var(--text-secondary)" /&gt;
+                &lt;Tooltip cursor={{fill: 'var(--primary-light)'}} contentStyle={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }} /&gt;
+                &lt;Bar dataKey="acc" fill="#10b981" radius={[0, 4, 4, 0]} /&gt;
+              &lt;/BarChart&gt;
+            &lt;/ResponsiveContainer&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    );
+  };
+  return (
+    &lt;div&gt;
+      &lt;div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '1rem', overflowX: 'auto', whiteSpace: 'nowrap' }}&gt;
+        &lt;button 
+          onClick={() =&gt; setActiveTab('modul')}
+          style={{ 
+            padding: '0.5rem 1rem', background: activeTab === 'modul' ? 'var(--primary-color)' : 'transparent', 
+            color: activeTab === 'modul' ? 'white' : 'var(--text-secondary)',
+            border: 'none', borderRadius: 'var(--radius-md)', cursor: 'pointer', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '0.5rem'
+          }}
+        &gt;
+          &lt;BookOpen size={16} /&gt; Daftar Modul
+        &lt;/button&gt;
+        &lt;button 
+          onClick={() =&gt; setActiveTab('manajemen')}
+          style={{ 
+            padding: '0.5rem 1rem', background: activeTab === 'manajemen' ? 'var(--primary-color)' : 'transparent', 
+            color: activeTab === 'manajemen' ? 'white' : 'var(--text-secondary)',
+            border: 'none', borderRadius: 'var(--radius-md)', cursor: 'pointer', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '0.5rem'
+          }}
+        &gt;
+          &lt;Edit size={16} /&gt; Ujian &amp; Quiz
+        &lt;/button&gt;
+        &lt;button 
+          onClick={() =&gt; setActiveTab('mengerjakan')}
+          style={{ 
+            padding: '0.5rem 1rem', background: activeTab === 'mengerjakan' ? 'var(--primary-color)' : 'transparent', 
+            color: activeTab === 'mengerjakan' ? 'white' : 'var(--text-secondary)',
+            border: 'none', borderRadius: 'var(--radius-md)', cursor: 'pointer', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '0.5rem'
+          }}
+        &gt;
+          &lt;PlayCircle size={16} /&gt; Mengerjakan
+        &lt;/button&gt;
+        &lt;button 
+          onClick={() =&gt; setActiveTab('analitik')}
+          style={{ 
+            padding: '0.5rem 1rem', background: activeTab === 'analitik' ? 'var(--primary-color)' : 'transparent', 
+            color: activeTab === 'analitik' ? 'white' : 'var(--text-secondary)',
+            border: 'none', borderRadius: 'var(--radius-md)', cursor: 'pointer', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '0.5rem'
+          }}
+        &gt;
+          &lt;BarChart2 size={16} /&gt; Analitik
+        &lt;/button&gt;
+      &lt;/div&gt;
+
+      &lt;div&gt;
+        {activeTab === 'modul' &amp;&amp; (
+          readingModule ? (
+            &lt;div className="animate-fade-in mt-4"&gt;
+              &lt;button 
+                className="btn btn-outline btn-sm mb-4 flex items-center gap-2"
+                onClick={() =&gt; setReadingModule(null)}
+              &gt;
+                &lt;ArrowLeft size={16} /&gt; Kembali ke Daftar Modul
+              &lt;/button&gt;
+              &lt;div className="card"&gt;
+                &lt;h2 className="text-2xl font-bold mb-2 text-primary"&gt;{readingModule.title}&lt;/h2&gt;
+                &lt;div className="flex gap-2 mb-6"&gt;
+                  &lt;span className="badge badge-primary"&gt;{readingModule.category}&lt;/span&gt;
+                  &lt;span className={`badge ${readingModule.status === 'Selesai' ? 'badge-success' : 'badge-warning'}`}&gt;
+                    {readingModule.status}
+                  &lt;/span&gt;
+                &lt;/div&gt;
+                
+                &lt;div className="prose max-w-none prose-slate" style={{ lineHeight: '1.7' }}&gt;
+                  {readingModule.content ? (
+                    &lt;ReactMarkdown&gt;{readingModule.content}&lt;/ReactMarkdown&gt;
+                  ) : (
+                    &lt;p className="text-muted"&gt;Materi belum tersedia untuk modul ini.&lt;/p&gt;
+                  )}
+                &lt;/div&gt;
+                
+                &lt;div className="mt-8 pt-6 border-t border-color-light flex justify-end"&gt;
+                  &lt;button 
+                    className="btn btn-primary flex items-center gap-2"
+                    onClick={() =&gt; {
+                      if (readingModule.status !== 'Selesai') {
+                        toggleModuleStatus(readingModule.id);
+                      }
+                      setReadingModule(null);
+                    }}
+                  &gt;
+                    &lt;CheckCircle size={18} /&gt; Tandai Selesai &amp; Kembali
+                  &lt;/button&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          ) : renderModul()
+        )}
+        {activeTab === 'manajemen' &amp;&amp; renderManajemen()}
+        {activeTab === 'mengerjakan' &amp;&amp; renderMengerjakan()}
+        {activeTab === 'analitik' &amp;&amp; renderAnalitik()}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};
+
+export default Quiz;
+</code></pre>
+</div>
+  <div style="text-align: center; margin-bottom: 40px;">
+    <img src="../UAS/belajar-pintar/screenshots/ss-quiz.png" style="max-width: 100%; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" alt="Quiz UI" />
+    <p style="font-style: italic; margin-top: 15px; color: #444;">Gambar 3. Halaman Sistem Kuis dan Penilaian Mode Analitik</p>
+  </div>
+
+  <h3 style="font-size: 18px; margin-bottom: 10px;">4. Forum.jsx (Forum Diskusi)</h3>
+  <p style="text-align: justify; margin-bottom: 20px;">
+    <strong>Penjelasan:</strong> Menyediakan fitur interaksi komunitas belajar antarsiswa. Dilengkapi dengan fungsionalitas pencarian data, filter <i>tag</i> kategori, dan pemberian <i>upvote</i> (voting) pada sebuah diskusi. <i>State</i> diskusi dikelola menggunakan pola Reducer.
+  </p>
+  
+  <div class="code-screenshot" style="background: #1e1e1e; color: #d4d4d4; padding: 20px; border-radius: 8px;  font-family: 'Consolas', 'Courier New', monospace; font-size: 11px; margin: 15px 0; border: 1px solid #333; page-break-inside: auto; text-align: left; ">
+  <div style="border-bottom: 1px solid #333; margin-bottom: 10px; padding-bottom: 10px; color: #888; font-weight: bold;">// Screenshot Code: Forum.jsx</div>
+  <pre style="margin: 0; white-space: pre-wrap;"><code>import React, { useReducer, useEffect, useState } from 'react';
+import { Search, Filter, MessageCircle, ArrowBigUp, CheckCircle, Pin, Flag, Award, MoreVertical, Plus, X, RefreshCw } from 'lucide-react';
+import { useAppContext } from '../../context/AppContext';
+import { useForumThreads } from '../../hooks/useAppData';
+
+const Forum = () =&gt; {
+  const { user } = useAppContext();
+  const { 
+    data: threads, 
+    isLoading, 
+    addForumThread, 
+    upvoteThread, 
+    togglePinThread, 
+    toggleSolvedThread 
+  } = useForumThreads();
+  
+  const [filters, setFilters] = useState({ search: '', sortBy: 'newest' });
+  const [showForm, setShowForm] = useState(false);
+  const [newTitle, setNewTitle] = useState('');
+  const [newDesc, setNewDesc] = useState('');
+
+  const handleSearch = (e) =&gt; {
+    setFilters(prev =&gt; ({ ...prev, search: e.target.value }));
+  };
+
+  const handleSort = (e) =&gt; {
+    setFilters(prev =&gt; ({ ...prev, sortBy: e.target.value }));
+  };
+
+  const handleAddThread = (e) =&gt; {
+    e.preventDefault();
+    if (!newTitle.trim() || !newDesc.trim()) return;
+    
+    const newThread = {
+      id: Date.now(),
+      title: newTitle,
+      author: user.name,
+      replies: 0,
+      upvotes: 0,
+      tags: ['Diskusi Baru'],
+      isPinned: false,
+      isSolved: false,
+      createdAt: new Date().toISOString(),
+      description: newDesc
+    };
+
+    addForumThread(newThread);
+    setNewTitle('');
+    setNewDesc('');
+    setShowForm(false);
+  };
+
+  const filteredThreads = (threads || [])
+    .filter(t =&gt; t.title.toLowerCase().includes(filters.search.toLowerCase()) || 
+                 t.tags.some(tag =&gt; tag.toLowerCase().includes(filters.search.toLowerCase())))
+    .sort((a, b) =&gt; {
+      if (a.isPinned !== b.isPinned) return a.isPinned ? -1 : 1;
+      if (filters.sortBy === 'popular') return b.upvotes - a.upvotes;
+      if (filters.sortBy === 'solved') return a.isSolved === b.isSolved ? 0 : a.isSolved ? -1 : 1;
+      return new Date(b.createdAt) - new Date(a.createdAt);
+    });
+
+  if (isLoading) {
+    return (
+      &lt;div className="flex items-center justify-center h-64 animate-fade-in"&gt;
+        &lt;RefreshCw size={32} className="animate-spin text-primary" /&gt;
+        &lt;span className="ml-3 text-lg font-medium text-primary"&gt;Memuat Forum...&lt;/span&gt;
+      &lt;/div&gt;
+    );
+  }
+
+  return (
+    &lt;div className="grid-4 gap-6 animate-fade-in"&gt;
+      {/* Sidebar Forum */}
+      &lt;div className="card h-fit flex-col flex gap-6 sticky top-24"&gt;
+        &lt;div&gt;
+          &lt;h3 className="font-bold text-lg mb-4"&gt;Pencarian&lt;/h3&gt;
+          &lt;div className="relative"&gt;
+            &lt;Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted" size={18} /&gt;
+            &lt;input 
+              type="text" 
+              placeholder="Cari topik atau tag..." 
+              className="input-control pl-10"
+              value={filters.search}
+              onChange={handleSearch}
+            /&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div&gt;
+          &lt;h3 className="font-bold text-lg mb-4"&gt;Filter &amp; Urutkan&lt;/h3&gt;
+          &lt;select className="input-control mb-3" value={filters.sortBy} onChange={handleSort}&gt;
+            &lt;option value="newest"&gt;Terbaru&lt;/option&gt;
+            &lt;option value="popular"&gt;Terpopuler&lt;/option&gt;
+            &lt;option value="solved"&gt;Terpecahkan&lt;/option&gt;
+          &lt;/select&gt;
+        &lt;/div&gt;
+
+        &lt;div&gt;
+          &lt;h3 className="font-bold text-lg mb-4"&gt;Reputasi Saya&lt;/h3&gt;
+          &lt;div className="flex items-center gap-4 bg-primary-light p-4 rounded-lg"&gt;
+            &lt;Award size={32} className="text-primary" /&gt;
+            &lt;div&gt;
+              &lt;p className="text-sm font-bold text-primary"&gt;Level 5 Contributor&lt;/p&gt;
+              &lt;p className="text-xs text-muted"&gt;1,500 Poin&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      {/* Main Forum List */}
+      &lt;div className="flex flex-col gap-4" style={{ gridColumn: 'span 3' }}&gt;
+        &lt;div className="flex justify-between items-center bg-bg-secondary p-4 rounded-lg shadow-sm border border-color"&gt;
+          &lt;h2 className="text-xl font-bold"&gt;Semua Diskusi&lt;/h2&gt;
+          &lt;button className="btn btn-primary" onClick={() =&gt; setShowForm(!showForm)}&gt;
+            {showForm ? &lt;&gt;&lt;X size={16}/&gt; Batal&lt;/&gt; : &lt;&gt;&lt;Plus size={16}/&gt; Buat Diskusi Baru&lt;/&gt;}
+          &lt;/button&gt;
+        &lt;/div&gt;
+
+        {showForm &amp;&amp; (
+          &lt;div className="card animate-fade-in" style={{ backgroundColor: 'var(--primary-light)', borderColor: 'var(--primary-color)' }}&gt;
+            &lt;h3 className="font-bold text-lg mb-4 text-primary"&gt;Mulai Diskusi Baru&lt;/h3&gt;
+            &lt;form onSubmit={handleAddThread} className="flex flex-col gap-4"&gt;
+              &lt;div&gt;
+                &lt;label className="input-label mb-2 block"&gt;Judul Diskusi&lt;/label&gt;
+                &lt;input type="text" className="input-control" value={newTitle} onChange={(e) =&gt; setNewTitle(e.target.value)} placeholder="Contoh: Bagaimana cara menggunakan Context API?" required /&gt;
+              &lt;/div&gt;
+              &lt;div&gt;
+                &lt;label className="input-label mb-2 block"&gt;Isi Pertanyaan/Diskusi&lt;/label&gt;
+                &lt;textarea className="input-control" rows="4" value={newDesc} onChange={(e) =&gt; setNewDesc(e.target.value)} placeholder="Jelaskan pertanyaan atau topik diskusi Anda..." required&gt;&lt;/textarea&gt;
+              &lt;/div&gt;
+              &lt;div className="flex justify-end mt-2"&gt;
+                &lt;button type="submit" className="btn btn-primary"&gt;Kirim Diskusi&lt;/button&gt;
+              &lt;/div&gt;
+            &lt;/form&gt;
+          &lt;/div&gt;
+        )}
+
+        {filteredThreads.map(thread =&gt; (
+          &lt;div key={thread.id} className={`card flex gap-4 ${thread.isPinned ? 'border-l-4 border-l-warning' : ''}`}&gt;
+            {/* Upvote column */}
+            &lt;div className="flex flex-col items-center gap-1 min-w-[3rem]"&gt;
+              &lt;button 
+                className="text-muted hover:text-primary transition-colors"
+                onClick={() =&gt; upvoteThread(thread.id)}
+              &gt;
+                &lt;ArrowBigUp size={24} /&gt;
+              &lt;/button&gt;
+              &lt;span className="font-bold"&gt;{thread.upvotes}&lt;/span&gt;
+            &lt;/div&gt;
+
+            {/* Content */}
+            &lt;div className="flex-1"&gt;
+              &lt;div className="flex justify-between items-start mb-2"&gt;
+                &lt;div className="flex items-center gap-2"&gt;
+                  {thread.isPinned &amp;&amp; &lt;Pin size={16} className="text-warning" /&gt;}
+                  {thread.isSolved &amp;&amp; &lt;CheckCircle size={16} className="text-success" /&gt;}
+                  &lt;h3 className="font-bold text-lg text-primary"&gt;{thread.title}&lt;/h3&gt;
+                &lt;/div&gt;
+                
+                {/* Moderation Tools */}
+                &lt;div className="flex gap-2 text-muted"&gt;
+                  &lt;button onClick={() =&gt; toggleSolvedThread(thread.id)} title="Tandai Selesai" className="hover:text-success"&gt;&lt;CheckCircle size={16} /&gt;&lt;/button&gt;
+                  &lt;button onClick={() =&gt; togglePinThread(thread.id)} title="Pin Thread" className="hover:text-warning"&gt;&lt;Pin size={16} /&gt;&lt;/button&gt;
+                  &lt;button onClick={() =&gt; alert('Laporan telah dikirim ke admin!')} title="Laporkan" className="hover:text-danger"&gt;&lt;Flag size={16} /&gt;&lt;/button&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+
+              &lt;p className="text-sm text-muted mb-4 line-clamp-2"&gt;
+                {thread.description || `Diskusi hangat seputar ${thread.category}. Mari bagikan pengalaman, error yang dihadapi, atau tips and trick yang relevan dengan topik ${thread.title} ini.`}
+              &lt;/p&gt;
+
+              &lt;div className="flex justify-between items-center text-xs"&gt;
+                &lt;div className="flex gap-2"&gt;
+                  {thread.tags.map(tag =&gt; (
+                    &lt;span key={tag} className="badge badge-gray"&gt;{tag}&lt;/span&gt;
+                  ))}
+                &lt;/div&gt;
+                &lt;div className="flex items-center gap-4 text-muted font-medium"&gt;
+                  &lt;div className="flex items-center gap-1"&gt;
+                    &lt;span className="avatar" style={{width: 24, height: 24, fontSize: 10}}&gt;{thread.author.charAt(0)}&lt;/span&gt;
+                    {thread.author}
+                  &lt;/div&gt;
+                  &lt;div className="flex items-center gap-1"&gt;
+                    &lt;MessageCircle size={14} /&gt; {thread.replies} Balasan
+                  &lt;/div&gt;
+                  &lt;span&gt;{new Date(thread.createdAt).toLocaleDateString()}&lt;/span&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        ))}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};
+
+export default Forum;
+</code></pre>
+</div>
+  <div style="text-align: center; margin-bottom: 40px;">
+    <img src="../UAS/belajar-pintar/screenshots/ss-forum.png" style="max-width: 100%; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" alt="Forum UI" />
+    <p style="font-style: italic; margin-top: 15px; color: #444;">Gambar 4. Halaman Forum Diskusi Interaktif Mahasiswa</p>
+  </div>
+
+  <div class="page-break"></div>
+
+  <h3 style="font-size: 18px; margin-bottom: 10px;">5. Achievements.jsx (Sistem Pencapaian)</h3>
+  <p style="text-align: justify; margin-bottom: 20px;">
+    <strong>Penjelasan:</strong> Fitur gamifikasi yang memvisualisasikan <i>learning path</i> atau jalur urutan perkembangan materi siswa. Halaman ini menampilkan koleksi lencana kelulusan (badges) dengan klasifikasi kelangkaan serta metrik penyelesaiannya.
+  </p>
+  
+  <div class="code-screenshot" style="background: #1e1e1e; color: #d4d4d4; padding: 20px; border-radius: 8px;  font-family: 'Consolas', 'Courier New', monospace; font-size: 11px; margin: 15px 0; border: 1px solid #333; page-break-inside: auto; text-align: left; ">
+  <div style="border-bottom: 1px solid #333; margin-bottom: 10px; padding-bottom: 10px; color: #888; font-weight: bold;">// Screenshot Code: Achievements.jsx</div>
+  <pre style="margin: 0; white-space: pre-wrap;"><code>import React from 'react';
+import { Trophy, Star, Shield, Zap, Target, Lock, CheckCircle, RefreshCw, AlertTriangle } from 'lucide-react';
+import { useAppContext } from '../../context/AppContext';
+import { useAchievements } from '../../hooks/useAppData';
+
+const Achievements = () =&gt; {
+  const { user } = useAppContext();
+  const { data: achievements, isLoading } = useAchievements();
+  if (isLoading) {
+    return (
+      &lt;div className="flex items-center justify-center h-64 animate-fade-in"&gt;
+        &lt;RefreshCw size={32} className="animate-spin text-primary" /&gt;
+        &lt;span className="ml-3 text-lg font-medium text-primary"&gt;Memuat Pencapaian...&lt;/span&gt;
+      &lt;/div&gt;
+    );
+  }
+  
+  const rarityColors = {
+    Common: 'badge-gray',
+    Rare: 'badge-primary',
+    Epic: 'badge-warning',
+    Legendary: 'badge-danger'
+  };
+
+  const icons = {
+    Trophy: Trophy,
+    Star: Star,
+    Shield: Shield,
+    Zap: Zap,
+    Target: Target
+  };
+
+  const getIcon = (name) =&gt; {
+    const Icon = icons[name] || Trophy;
+    return &lt;Icon size={24} /&gt;;
+  };
+
+  const totalPoints = achievements.filter(a =&gt; a.isUnlocked).reduce((acc, a) =&gt; acc + a.points, 0);
+  const unlockedCount = achievements.filter(a =&gt; a.isUnlocked).length;
+
+  return (
+    &lt;div className="animate-fade-in flex flex-col gap-6"&gt;
+      {/* Header Profile */}
+      &lt;div className="card bg-primary-light border-primary flex justify-between items-center relative"&gt;
+        &lt;div className="flex items-center gap-6"&gt;
+          &lt;div className="avatar" style={{width: 80, height: 80, fontSize: 32}}&gt;{user.avatar}&lt;/div&gt;
+          &lt;div&gt;
+            &lt;h2 className="text-2xl font-bold text-primary mb-1"&gt;{user.name}&lt;/h2&gt;
+            &lt;p className="text-muted flex items-center gap-2"&gt;
+              &lt;Star size={16} className="text-warning" /&gt; Level 5 Scholar
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div className="flex gap-6 text-center"&gt;
+          &lt;div&gt;
+            &lt;p className="text-muted text-sm font-medium mb-1"&gt;Total Poin&lt;/p&gt;
+            &lt;h3 className="text-3xl font-bold text-primary"&gt;{totalPoints}&lt;/h3&gt;
+          &lt;/div&gt;
+          &lt;div className="w-px bg-border-color h-12 self-center"&gt;&lt;/div&gt;
+          &lt;div&gt;
+            &lt;p className="text-muted text-sm font-medium mb-1"&gt;Badge Terbuka&lt;/p&gt;
+            &lt;h3 className="text-3xl font-bold text-primary"&gt;{unlockedCount}/{achievements.length}&lt;/h3&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div className="grid-3 gap-6"&gt;
+        {/* Kolom 1: Progress &amp; Path */}
+        &lt;div className="flex flex-col gap-6" style={{ gridColumn: 'span 1' }}&gt;
+          &lt;div className="card"&gt;
+            &lt;h3 className="card-title mb-4"&gt;Learning Path Saat Ini&lt;/h3&gt;
+            &lt;div className="relative pl-6 border-l-2 border-border-color ml-3 flex flex-col gap-6"&gt;
+              {[
+                { title: 'Pemula React', status: 'done' },
+                { title: 'State Management', status: 'active' },
+                { title: 'Advanced Patterns', status: 'pending' },
+                { title: 'Master React', status: 'pending' },
+              ].map((step, i) =&gt; (
+                &lt;div key={i} className="relative"&gt;
+                  &lt;div className={`absolute -left-[33px] w-4 h-4 rounded-full border-2 border-white ${step.status === 'done' ? 'bg-success-color' : step.status === 'active' ? 'bg-primary-color ring-4 ring-primary-light' : 'bg-border-color'}`}&gt;&lt;/div&gt;
+                  &lt;h4 className={`font-bold ${step.status === 'active' ? 'text-primary' : step.status === 'pending' ? 'text-muted' : ''}`}&gt;{step.title}&lt;/h4&gt;
+                  &lt;p className="text-xs text-muted mt-1"&gt;{step.status === 'done' ? 'Selesai' : step.status === 'active' ? 'Sedang Berjalan' : 'Terkunci'}&lt;/p&gt;
+                &lt;/div&gt;
+              ))}
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        {/* Kolom 2: Koleksi Badge */}
+        &lt;div className="card" style={{ gridColumn: 'span 2' }}&gt;
+          &lt;h3 className="card-title mb-4"&gt;Koleksi Pencapaian&lt;/h3&gt;
+          &lt;div className="grid-2 gap-4"&gt;
+            {achievements.map((ach) =&gt; (
+              &lt;div key={ach.id} className={`border border-color rounded-lg p-4 flex gap-4 ${ach.isUnlocked ? 'bg-bg-primary' : 'bg-bg-primary opacity-60 grayscale'}`}&gt;
+                &lt;div className="avatar" style={{width: 50, height: 50, backgroundColor: ach.isUnlocked ? 'var(--primary-light)' : 'var(--border-color)', color: ach.isUnlocked ? 'var(--primary-color)' : 'var(--text-secondary)'}}&gt;
+                  {ach.isUnlocked ? getIcon(ach.icon) : &lt;Lock size={24} /&gt;}
+                &lt;/div&gt;
+                &lt;div className="flex-1"&gt;
+                  &lt;div className="flex justify-between items-start mb-1"&gt;
+                    &lt;h4 className="font-bold text-sm"&gt;{ach.title}&lt;/h4&gt;
+                    &lt;span className={`badge ${rarityColors[ach.rarity]}`}&gt;{ach.rarity}&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;p className="text-xs text-muted mb-3"&gt;{ach.description}&lt;/p&gt;
+                  
+                  {!ach.isUnlocked &amp;&amp; (
+                    &lt;div&gt;
+                      &lt;div className="flex justify-between text-xs mb-1"&gt;
+                        &lt;span&gt;Progress&lt;/span&gt;
+                        &lt;span&gt;{ach.progress}%&lt;/span&gt;
+                      &lt;/div&gt;
+                      &lt;div className="progress-bg h-1.5"&gt;
+                        &lt;div className="progress-fill" style={{ width: `${ach.progress}%` }}&gt;&lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  )}
+                  {ach.isUnlocked &amp;&amp; (
+                    &lt;div className="text-xs font-bold text-success flex items-center gap-1"&gt;
+                      &lt;CheckCircle size={12} /&gt; Selesai (+{ach.points} pts)
+                    &lt;/div&gt;
+                  )}
+                &lt;/div&gt;
+              &lt;/div&gt;
+            ))}
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};
+
+export default Achievements;
+</code></pre>
+</div>
+  <div style="text-align: center; margin-bottom: 40px;">
+    <img src="../UAS/belajar-pintar/screenshots/ss-achievements.png" style="max-width: 100%; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" alt="Achievements UI" />
+    <p style="font-style: italic; margin-top: 15px; color: #444;">Gambar 5. Halaman Koleksi Pencapaian dan Gamifikasi Pembelajaran</p>
+  </div>
+
+  <h3 style="font-size: 18px; margin-bottom: 10px;">6. Instructor.jsx (Dashboard Instruktur)</h3>
+  <p style="text-align: justify; margin-bottom: 20px;">
+    <strong>Penjelasan:</strong> Panel eksklusif khusus instruktur untuk meninjau efektivitas pembelajaran kelas secara menyeluruh. Terdapat indikator performa siswa, daftar siswa bermasalah (<i>struggling students</i>), hingga pengunggahan materi pendukung tambahan.
+  </p>
+  
+  <div class="code-screenshot" style="background: #1e1e1e; color: #d4d4d4; padding: 20px; border-radius: 8px;  font-family: 'Consolas', 'Courier New', monospace; font-size: 11px; margin: 15px 0; border: 1px solid #333; page-break-inside: auto; text-align: left; ">
+  <div style="border-bottom: 1px solid #333; margin-bottom: 10px; padding-bottom: 10px; color: #888; font-weight: bold;">// Screenshot Code: Instructor.jsx</div>
+  <pre style="margin: 0; white-space: pre-wrap;"><code>import React from 'react';
+import { Users, BookOpen, Clock, AlertOctagon, UploadCloud, BarChart2, MessageSquare, Plus, Star, CheckCircle } from 'lucide-react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
+
+const Instructor = () =&gt; {
+
+  const performanceData = [
+    { name: 'Modul 1', avg: 85, completion: 98 },
+    { name: 'Modul 2', avg: 82, completion: 95 },
+    { name: 'Modul 3', avg: 78, completion: 88 },
+    { name: 'Modul 4', avg: 75, completion: 82 },
+    { name: 'Modul 5', avg: 72, completion: 75 },
+  ];
+
+  const engagementData = [
+    { name: 'Video 1', views: 450 },
+    { name: 'PDF Materi', views: 320 },
+    { name: 'Quiz Interaktif', views: 480 },
+    { name: 'Tugas Praktik', views: 210 },
+  ];
+
+  const strugglingStudents = [
+    { name: 'Budi Santoso', issue: 'Sering Gagal Quiz Modul 4', lastActive: '2 hari lalu', avatar: 'B' },
+    { name: 'Siti Aminah', issue: 'Tidak Aktif &gt; 1 Minggu', lastActive: '8 hari lalu', avatar: 'S' },
+    { name: 'Ahmad Faisal', issue: 'Nilai di bawah rata-rata', lastActive: '1 hari lalu', avatar: 'A' },
+  ];
+
+  return (
+    &lt;div className="animate-fade-in flex flex-col gap-6"&gt;
+      
+      {/* Overview Performa Kelas */}
+      &lt;div className="card"&gt;
+        &lt;div className="card-header border-b border-color-light pb-4 mb-4"&gt;
+          &lt;h3 className="card-title text-xl text-primary"&gt;Overview Performa Kelas&lt;/h3&gt;
+        &lt;/div&gt;
+        &lt;div className="grid-4 mb-6"&gt;
+          &lt;div className="flex flex-col gap-1 border-r border-color-light pr-4"&gt;
+            &lt;span className="text-muted text-sm font-medium flex items-center gap-2"&gt;&lt;BookOpen size={16}/&gt; Rata-rata Nilai&lt;/span&gt;
+            &lt;span className="text-3xl font-bold text-success"&gt;82.5&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div className="flex flex-col gap-1 border-r border-color-light px-4"&gt;
+            &lt;span className="text-muted text-sm font-medium flex items-center gap-2"&gt;&lt;CheckCircleIcon /&gt; Tingkat Penyelesaian&lt;/span&gt;
+            &lt;span className="text-3xl font-bold text-primary"&gt;78%&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div className="flex flex-col gap-1 border-r border-color-light px-4"&gt;
+            &lt;span className="text-muted text-sm font-medium flex items-center gap-2"&gt;&lt;Clock size={16}/&gt; Avg. Waktu Belajar&lt;/span&gt;
+            &lt;span className="text-3xl font-bold text-warning"&gt;4.2 Jam&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div className="flex flex-col gap-1 pl-4"&gt;
+            &lt;span className="text-muted text-sm font-medium flex items-center gap-2"&gt;&lt;Users size={16}/&gt; Total Mahasiswa&lt;/span&gt;
+            &lt;span className="text-3xl font-bold"&gt;145&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div className="grid-2 gap-6"&gt;
+          &lt;div style={{ height: 250 }}&gt;
+            &lt;h4 className="font-bold text-sm text-muted mb-2 text-center"&gt;Trend Nilai vs Penyelesaian&lt;/h4&gt;
+            &lt;ResponsiveContainer&gt;
+              &lt;LineChart data={performanceData}&gt;
+                &lt;CartesianGrid strokeDasharray="3 3" stroke="var(--border-color)" /&gt;
+                &lt;XAxis dataKey="name" stroke="var(--text-secondary)" fontSize={12} /&gt;
+                &lt;YAxis stroke="var(--text-secondary)" fontSize={12} /&gt;
+                &lt;Tooltip contentStyle={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }} /&gt;
+                &lt;Line type="monotone" dataKey="avg" stroke="var(--success-color)" strokeWidth={2} name="Rata-rata Nilai" /&gt;
+                &lt;Line type="monotone" dataKey="completion" stroke="var(--primary-color)" strokeWidth={2} name="% Selesai" /&gt;
+              &lt;/LineChart&gt;
+            &lt;/ResponsiveContainer&gt;
+          &lt;/div&gt;
+          
+          &lt;div className="bg-danger/5 p-4 rounded-lg border border-danger/20"&gt;
+            &lt;h4 className="font-bold text-danger flex items-center gap-2 mb-4"&gt;
+              &lt;AlertOctagon size={18} /&gt; Identifikasi Mahasiswa Kesulitan
+            &lt;/h4&gt;
+            &lt;div className="flex flex-col gap-3"&gt;
+              {strugglingStudents.map((student, i) =&gt; (
+                &lt;div key={i} className="flex justify-between items-center bg-bg-secondary p-3 rounded-md shadow-sm"&gt;
+                  &lt;div className="flex items-center gap-3"&gt;
+                    &lt;div className="avatar" style={{width: 32, height: 32, fontSize: 14}}&gt;{student.avatar}&lt;/div&gt;
+                    &lt;div&gt;
+                      &lt;p className="font-bold text-sm"&gt;{student.name}&lt;/p&gt;
+                      &lt;p className="text-xs text-danger"&gt;{student.issue}&lt;/p&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;button className="btn btn-outline btn-sm text-xs"&gt;Pesan&lt;/button&gt;
+                &lt;/div&gt;
+              ))}
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div className="grid-2 gap-6"&gt;
+        {/* Manajemen Konten */}
+        &lt;div className="card"&gt;
+          &lt;div className="card-header"&gt;
+            &lt;h3 className="card-title flex items-center gap-2"&gt;&lt;UploadCloud size={20} /&gt; Manajemen Konten (Upload)&lt;/h3&gt;
+          &lt;/div&gt;
+          
+          &lt;div className="border-2 border-dashed border-primary/30 bg-primary-light/50 rounded-lg p-8 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-primary-light transition-colors mb-4"&gt;
+            &lt;UploadCloud size={48} className="text-primary mb-2" /&gt;
+            &lt;p className="font-bold"&gt;Klik atau Seret file ke sini&lt;/p&gt;
+            &lt;p className="text-xs text-muted"&gt;Mendukung Video (MP4), PDF, dan Gambar (JPG/PNG)&lt;/p&gt;
+          &lt;/div&gt;
+
+          &lt;button className="btn btn-primary w-full justify-center gap-2"&gt;
+            &lt;Plus size={16} /&gt; Tambah Materi Baru
+          &lt;/button&gt;
+        &lt;/div&gt;
+
+        {/* Analitik &amp; Feedback */}
+        &lt;div className="card flex flex-col gap-6"&gt;
+          &lt;div&gt;
+            &lt;div className="card-header mb-2"&gt;
+              &lt;h3 className="card-title flex items-center gap-2"&gt;&lt;BarChart2 size={20} /&gt; Analitik Engagement Konten&lt;/h3&gt;
+            &lt;/div&gt;
+            &lt;div style={{ height: 160 }}&gt;
+              &lt;ResponsiveContainer&gt;
+                &lt;BarChart data={engagementData} layout="vertical"&gt;
+                  &lt;CartesianGrid strokeDasharray="3 3" stroke="var(--border-color)" horizontal={false} /&gt;
+                  &lt;XAxis type="number" stroke="var(--text-secondary)" fontSize={12} /&gt;
+                  &lt;YAxis dataKey="name" type="category" stroke="var(--text-secondary)" fontSize={12} width={100} /&gt;
+                  &lt;Tooltip cursor={{fill: 'var(--primary-light)'}} contentStyle={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }} /&gt;
+                  &lt;Bar dataKey="views" fill="var(--warning-color)" radius={[0, 4, 4, 0]} name="Total Views" /&gt;
+                &lt;/BarChart&gt;
+              &lt;/ResponsiveContainer&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div&gt;
+            &lt;div className="card-header mb-2"&gt;
+              &lt;h3 className="card-title flex items-center gap-2"&gt;&lt;MessageSquare size={20} /&gt; Koleksi Feedback Terbaru&lt;/h3&gt;
+            &lt;/div&gt;
+            &lt;div className="flex flex-col gap-2"&gt;
+              &lt;div className="bg-bg-primary p-3 rounded border border-color text-sm"&gt;
+                &lt;div className="flex justify-between items-center mb-1"&gt;
+                  &lt;span className="font-bold text-xs"&gt;Video Modul 2&lt;/span&gt;
+                  &lt;div className="flex gap-1 text-warning"&gt;&lt;Star size={12} fill="currentColor"/&gt;&lt;Star size={12} fill="currentColor"/&gt;&lt;Star size={12} fill="currentColor"/&gt;&lt;Star size={12} fill="currentColor"/&gt;&lt;Star size={12} className="text-border-color" fill="currentColor"/&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;p className="text-muted text-xs"&gt;Penjelasannya sangat jelas, tapi mungkin suaranya bisa lebih dibesarkan sedikit.&lt;/p&gt;
+              &lt;/div&gt;
+              &lt;div className="bg-bg-primary p-3 rounded border border-color text-sm"&gt;
+                &lt;div className="flex justify-between items-center mb-1"&gt;
+                  &lt;span className="font-bold text-xs"&gt;Quiz Evaluasi 1&lt;/span&gt;
+                  &lt;div className="flex gap-1 text-warning"&gt;&lt;Star size={12} fill="currentColor"/&gt;&lt;Star size={12} fill="currentColor"/&gt;&lt;Star size={12} fill="currentColor"/&gt;&lt;Star size={12} className="text-border-color" fill="currentColor"/&gt;&lt;Star size={12} className="text-border-color" fill="currentColor"/&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;p className="text-muted text-xs"&gt;Soal nomor 4 sepertinya kuncinya salah. Mohon dicek kembali.&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+  );
+};
+
+// Quick fix for missing CheckCircleIcon
+const CheckCircleIcon = () =&gt; (
+  &lt;svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;&lt;path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"&gt;&lt;/path&gt;&lt;polyline points="22 4 12 14.01 9 11.01"&gt;&lt;/polyline&gt;&lt;/svg&gt;
+)
+
+export default Instructor;
+</code></pre>
+</div>
+  <div style="text-align: center; margin-bottom: 40px;">
+    <img src="../UAS/belajar-pintar/screenshots/ss-instructor.png" style="max-width: 100%; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" alt="Instructor UI" />
+    <p style="font-style: italic; margin-top: 15px; color: #444;">Gambar 6. Halaman Dashboard Khusus Pengajar dan Instruktur</p>
+  </div>
+</div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>
+          <div style="height: 2.5cm;"></div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</body>
+</html>
