@@ -28,6 +28,16 @@ class EventController extends Controller
             $query->where('kategori_id', $request->kategori);
         }
 
+        if ($request->has('status') && $request->status != '') {
+            if ($request->status === 'Upcoming') {
+                $query->upcoming();
+            } elseif ($request->status === 'Ongoing') {
+                $query->ongoing();
+            } elseif ($request->status === 'Completed') {
+                $query->completed();
+            }
+        }
+
         if ($request->has('sort') && $request->sort == 'oldest') {
             $query->orderBy('tanggal_waktu', 'asc');
         } else {

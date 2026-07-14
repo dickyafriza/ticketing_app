@@ -350,3 +350,47 @@ test('event status transitions record in status history log', function () {
         'status' => 'Completed'
     ]);
 });
+
+test('events can be filtered by status on index page', function () {
+    $user = User::factory()->create();
+    $kategori = Kategori::create(['nama' => 'Festival']);
+
+    // Upcoming event
+    Event::create([
+        'user_id' => $user->id,
+        'kategori_id' => $kategori->id,
+        'judul' => 'Upcoming Event',
+        'deskripsi' => 'Desc',
+        'lokasi' => 'Loc',
+        'tanggal_waktu' => now()->addDays(5),
+        'gambar' => 'events/up.jpg',
+    ]);
+
+    // Completed event
+    Event::create([
+        'user_id' => $user->id,
+        'kategori_id' => $kategori->id,
+        'judul' => 'Completed Event',
+        'deskripsi' => 'Desc',
+        'lokasi' => 'Loc',
+        'tanggal_waktu' => now()->subDays(5),
+        'gambar' => 'events/comp.jpg',
+    ]);
+
+    // Filter by Upcoming
+    $response = $this
+        ->actingAs($user)
+        ->get(route('admin.events.index', ['status' => 'Upcoming']));
+    $response->assertOk();
+    $response->assertSee('Upcoming Event');
+    $response->assertDontSee('Completed Event');
+
+    // Filter by Completed
+    $response = $this
+        ->actingAs($user)
+        ->get(route('admin.events.index', ['status' => 'Completed']));
+    $response->assertOk();
+    $response->assertSee('Completed Event');
+    $response->assertDontSee('Upcoming Event');
+});
+

@@ -35,6 +35,13 @@
             @endforeach
         </select>
         
+        <select name="status" class="px-4 py-2 border rounded-lg">
+            <option value="">Semua Status</option>
+            <option value="Upcoming" {{ request('status') === 'Upcoming' ? 'selected' : '' }}>Upcoming</option>
+            <option value="Ongoing" {{ request('status') === 'Ongoing' ? 'selected' : '' }}>Ongoing</option>
+            <option value="Completed" {{ request('status') === 'Completed' ? 'selected' : '' }}>Completed</option>
+        </select>
+        
         <select name="sort" class="px-4 py-2 border rounded-lg">
             <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Terbaru</option>
             <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>Terlama</option>
