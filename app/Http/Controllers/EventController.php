@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\EventsExport;
+use Carbon\Carbon;
 
 class EventController extends Controller
 {
@@ -18,16 +19,23 @@ class EventController extends Controller
      */
     public function index(Request $request)
     {
-        $query = auth()->user()->events()->with('kategori');
+        $query = auth()->user()->events()->with(['kategori', 'tikets']);
 
+        // Search by judul or lokasi
         if ($request->has('search') && $request->search != '') {
-            $query->where('judul', 'like', '%' . $request->search . '%');
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('judul', 'like', '%' . $search . '%')
+                  ->orWhere('lokasi', 'like', '%' . $search . '%');
+            });
         }
 
+        // Filter by kategori_id
         if ($request->has('kategori') && $request->kategori != '') {
             $query->where('kategori_id', $request->kategori);
         }
 
+        // Filter by status (Upcoming, Ongoing, Completed)
         if ($request->has('status') && $request->status != '') {
             if ($request->status === 'Upcoming') {
                 $query->upcoming();
@@ -38,16 +46,14 @@ class EventController extends Controller
             }
         }
 
-        if ($request->has('sort') && $request->sort == 'oldest') {
-            $query->orderBy('tanggal_waktu', 'asc');
-        } else {
-            $query->orderBy('tanggal_waktu', 'desc');
-        }
+        // Sort by tanggal_waktu (asc/desc), default asc
+        $sort = $request->get('sort', 'asc');
+        $query->orderBy('tanggal_waktu', $sort);
 
         $events = $query->paginate(10);
         $kategoris = Kategori::all();
 
-        return view('admin.events.index', compact('events', 'kategoris'));
+        return view('pages.admin.events.index', compact('events', 'kategoris'));
     }
 
     public function export()
@@ -109,7 +115,7 @@ class EventController extends Controller
     public function create()
     {
         $kategoris = Kategori::all();
-        return view('admin.events.create', compact('kategoris'));
+        return view('pages.admin.events.create', compact('kategoris'));
     }
 
     /**
@@ -119,7 +125,10 @@ class EventController extends Controller
     {
         $validated = $request->validated();
         
-        $imagePath = $request->file('gambar')->store('events', 'public');
+        $imagePath = 'konser.jpg';
+        if ($request->hasFile('gambar')) {
+            $imagePath = $request->file('gambar')->store('events', 'public');
+        }
 
         \Illuminate\Support\Facades\DB::transaction(function () use ($validated, $imagePath) {
             $event = auth()->user()->events()->create([
@@ -177,7 +186,8 @@ class EventController extends Controller
 
         $event->load('tikets');
         $kategoris = Kategori::all();
-        return view('admin.events.edit', compact('event', 'kategoris'));
+        $hasSales = $event->hasSales();
+        return view('pages.admin.events.edit', compact('event', 'kategoris', 'hasSales'));
     }
 
     /**
@@ -191,15 +201,20 @@ class EventController extends Controller
 
         $validated = $request->validated();
         
-        // Cek jika sudah ada penjualan
+        // Jika event sudah terjual (hasSales()): Tampilkan error jika tanggal_waktu berubah
         if ($event->hasSales()) {
-            // Jangan update tanggal_waktu
+            $requestTime = Carbon::parse($request->tanggal_waktu)->format('Y-m-d H:i');
+            $eventTime = $event->tanggal_waktu->format('Y-m-d H:i');
+            if ($requestTime !== $eventTime) {
+                return back()->withErrors(['tanggal_waktu' => 'Tanggal dan waktu tidak dapat diubah karena tiket sudah terjual.'])->withInput();
+            }
+            // Jangan update tanggal_waktu jika hasSales
             unset($validated['tanggal_waktu']);
         }
 
         if ($request->hasFile('gambar')) {
-            // Hapus gambar lama
-            if (Storage::disk('public')->exists($event->gambar)) {
+            // Hapus gambar lama jika bukan default
+            if ($event->gambar && $event->gambar !== 'konser.jpg' && Storage::disk('public')->exists($event->gambar)) {
                 Storage::disk('public')->delete($event->gambar);
             }
             $validated['gambar'] = $request->file('gambar')->store('events', 'public');
@@ -217,15 +232,34 @@ class EventController extends Controller
                 ]);
             }
 
-            // Update Tiket (Sederhananya hapus yang lama dan buat baru jika belum ada penjualan)
+            // Handle tickets
             if (!$event->hasSales()) {
-                $event->tikets()->delete();
+                $ticketIdsInRequest = [];
                 foreach ($request->tikets as $tiketData) {
-                    $event->tikets()->create([
-                        'tipe' => $tiketData['tipe'],
-                        'harga' => $tiketData['harga'],
-                        'stok' => $tiketData['stok'],
-                    ]);
+                    if (!empty($tiketData['id'])) {
+                        $ticketIdsInRequest[] = $tiketData['id'];
+                    }
+                }
+
+                // Delete removed tickets (hanya jika belum ada penjualan)
+                $event->tikets()->whereNotIn('id', $ticketIdsInRequest)->delete();
+
+                foreach ($request->tikets as $tiketData) {
+                    if (!empty($tiketData['id'])) {
+                        // Update existing tickets
+                        $event->tikets()->where('id', $tiketData['id'])->update([
+                            'tipe' => $tiketData['tipe'],
+                            'harga' => $tiketData['harga'],
+                            'stok' => $tiketData['stok'],
+                        ]);
+                    } else {
+                        // Create new tickets
+                        $event->tikets()->create([
+                            'tipe' => $tiketData['tipe'],
+                            'harga' => $tiketData['harga'],
+                            'stok' => $tiketData['stok'],
+                        ]);
+                    }
                 }
             }
         });
@@ -246,7 +280,7 @@ class EventController extends Controller
             return redirect()->route('admin.events.index')->with('error', 'Tidak dapat menghapus event yang sudah memiliki penjualan tiket.');
         }
 
-        if (Storage::disk('public')->exists($event->gambar)) {
+        if ($event->gambar && $event->gambar !== 'konser.jpg' && Storage::disk('public')->exists($event->gambar)) {
             Storage::disk('public')->delete($event->gambar);
         }
 

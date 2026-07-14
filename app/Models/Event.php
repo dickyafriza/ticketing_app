@@ -26,9 +26,10 @@ class Event extends Model
 
     public function getStatusAttribute()
     {
+        $now = Carbon::now();
         if ($this->tanggal_waktu->isFuture()) {
             return 'Upcoming';
-        } elseif ($this->tanggal_waktu->isToday()) {
+        } elseif ($now->between($this->tanggal_waktu, $this->tanggal_waktu->copy()->addHours(3))) {
             return 'Ongoing';
         } else {
             return 'Completed';
@@ -37,7 +38,14 @@ class Event extends Model
 
     public function getImageUrlAttribute()
     {
-        return $this->gambar ? asset('storage/' . $this->gambar) : asset('images/default-event.jpg');
+        $url = $this->gambar;
+        if (filter_var($url, FILTER_VALIDATE_URL)) {
+            return $url;
+        }
+        if ($url && \Illuminate\Support\Facades\Storage::disk('public')->exists($url)) {
+            return asset('storage/' . $url);
+        }
+        return asset('images/konser.jpg');
     }
 
     public function hasSales()
@@ -52,12 +60,12 @@ class Event extends Model
 
     public function scopeOngoing($query)
     {
-        return $query->whereDate('tanggal_waktu', Carbon::today());
+        return $query->whereBetween('tanggal_waktu', [Carbon::now()->subHours(3), Carbon::now()]);
     }
 
     public function scopeCompleted($query)
     {
-        return $query->where('tanggal_waktu', '<', Carbon::today());
+        return $query->where('tanggal_waktu', '<', Carbon::now()->subHours(3));
     }
 
     public function tikets()

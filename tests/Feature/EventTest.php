@@ -170,7 +170,7 @@ test('event date/time and tickets are locked when tickets are sold', function ()
         'kategori_id' => $kategori->id,
         'deskripsi' => 'Deskripsi baru',
         'lokasi' => 'Lokasi baru',
-        'tanggal_waktu' => now()->addDays(12)->format('Y-m-d H:i:s'), // should be ignored
+        'tanggal_waktu' => $event->tanggal_waktu->format('Y-m-d H:i:s'), // original date, should not throw validation error
         'tikets' => [
             ['tipe' => 'reguler', 'harga' => 999999, 'stok' => 999], // should be ignored
         ]
@@ -192,6 +192,53 @@ test('event date/time and tickets are locked when tickets are sold', function ()
     // Tickets should NOT be updated
     $this->assertCount(1, $event->tikets);
     $this->assertEquals(100000, $event->tikets->first()->harga);
+});
+
+test('event date/time cannot be updated when tickets are sold', function () {
+    $user = User::factory()->create();
+    $kategori = Kategori::create(['nama' => 'Konser']);
+
+    $event = Event::create([
+        'user_id' => $user->id,
+        'kategori_id' => $kategori->id,
+        'judul' => 'Konser Padi',
+        'deskripsi' => 'Deskripsi lama',
+        'lokasi' => 'Lokasi lama',
+        'tanggal_waktu' => now()->addDays(5),
+        'gambar' => 'events/padi.jpg',
+    ]);
+
+    $tiket = $event->tikets()->create([
+        'tipe' => 'reguler',
+        'harga' => 100000,
+        'stok' => 50
+    ]);
+
+    Order::create([
+        'user_id' => $user->id,
+        'event_id' => $event->id,
+        'order_date' => now(),
+        'total_harga' => 100000
+    ]);
+
+    $payload = [
+        'judul' => 'Konser Padi Updated Name Only',
+        'kategori_id' => $kategori->id,
+        'deskripsi' => 'Deskripsi baru',
+        'lokasi' => 'Lokasi baru',
+        'tanggal_waktu' => now()->addDays(12)->format('Y-m-d H:i:s'), // changed date
+        'tikets' => [
+            ['tipe' => 'reguler', 'harga' => 100000, 'stok' => 50],
+        ]
+    ];
+
+    $response = $this
+        ->actingAs($user)
+        ->from(route('admin.events.edit', $event))
+        ->put(route('admin.events.update', $event), $payload);
+
+    $response->assertRedirect(route('admin.events.edit', $event));
+    $response->assertSessionHasErrors(['tanggal_waktu']);
 });
 
 test('event cannot be deleted if there are ticket sales', function () {
