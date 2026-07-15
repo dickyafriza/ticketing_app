@@ -15,7 +15,7 @@ Route::get('/events/{event}', [EventController::class, 'show'])->name('events.sh
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
-// Category routes (admin)
+// Category routes (admin) 
 Route::prefix('admin')->name('categories.')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/categories', [DashboardController::class, 'index'])->name('index');
     Route::post('/categories', [CategoryController::class, 'store'])->name('store');
@@ -23,13 +23,13 @@ Route::prefix('admin')->name('categories.')->middleware(['auth', 'verified'])->g
     Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('destroy');
 });
 
-// Admin Events routes
+// Admin Events routes *1*
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(function () {
     Route::post('/events/bulk-delete', [EventController::class, 'bulkDelete'])->name('events.bulkDelete');
     Route::get('/events/export', [EventController::class, 'export'])->name('events.export');
     Route::post('/events/{event}/clone', [EventController::class, 'clone'])->name('events.clone');
     Route::resource('events', EventController::class)->except(['show']);
-});
+}); // *1*
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

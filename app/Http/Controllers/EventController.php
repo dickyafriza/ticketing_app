@@ -16,7 +16,7 @@ class EventController extends Controller
 {
     /**
      * Display a listing of the resource.
-     */
+     */ // *2*
     public function index(Request $request)
     {
         $query = auth()->user()->events()->with(['kategori', 'tikets']);
@@ -56,11 +56,12 @@ class EventController extends Controller
         return view('pages.admin.events.index', compact('events', 'kategoris'));
     }
 
+// *2*
     public function export()
     {
         return Excel::download(new EventsExport, 'events.xlsx');
     }
-
+// *5*
     public function bulkDelete(Request $request)
     {
         $ids = $request->input('ids');
@@ -108,6 +109,7 @@ class EventController extends Controller
 
         return redirect()->route('admin.events.index')->with('success', 'Event berhasil diduplikasi.');
     }
+// *5*
 
     /**
      * Show the form for creating a new resource.
@@ -129,7 +131,7 @@ class EventController extends Controller
         if ($request->hasFile('gambar')) {
             $imagePath = $request->file('gambar')->store('events', 'public');
         }
-
+// *3*
         \Illuminate\Support\Facades\DB::transaction(function () use ($validated, $imagePath) {
             $event = auth()->user()->events()->create([
                 'judul' => $validated['judul'],
@@ -147,7 +149,6 @@ class EventController extends Controller
                     'stok' => $tiketData['stok'],
                 ]);
             }
-
             EventStatusHistory::create([
                 'event_id' => $event->id,
                 'status' => $event->status
@@ -156,7 +157,7 @@ class EventController extends Controller
 
         return redirect()->route('admin.events.index')->with('success', 'Event berhasil ditambahkan.');
     }
-
+// *3*
     /**
      * Display the specified resource.
      */
@@ -177,7 +178,7 @@ class EventController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     */
+     */ 
     public function edit(Event $event)
     {
         if ($event->user_id !== auth()->id()) {
@@ -192,7 +193,7 @@ class EventController extends Controller
 
     /**
      * Update the specified resource in storage.
-     */
+     */ // *4*
     public function update(EventFormRequest $request, Event $event)
     {
         if ($event->user_id !== auth()->id()) {
@@ -219,7 +220,7 @@ class EventController extends Controller
             }
             $validated['gambar'] = $request->file('gambar')->store('events', 'public');
         }
-
+// *4*
         $oldStatus = $event->status;
 
         \Illuminate\Support\Facades\DB::transaction(function () use ($event, $validated, $oldStatus, $request) {

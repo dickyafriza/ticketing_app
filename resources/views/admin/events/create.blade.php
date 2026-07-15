@@ -125,7 +125,7 @@
         const container = document.getElementById('tiket-container');
         const addBtn = document.getElementById('add-tiket-btn');
         let tiketCount = 1;
-
+// *3*
         addBtn.addEventListener('click', function() {
             const row = document.createElement('div');
             row.className = 'tiket-row flex gap-4 items-end bg-gray-50 p-4 rounded-lg';
@@ -154,9 +154,9 @@
                 </div>
             `;
             container.appendChild(row);
-            tiketCount++;
+            tiketCount++; //increment indeks counter ticket
         });
-
+// *3*
         container.addEventListener('click', function(e) {
             if (e.target.closest('.remove-btn')) {
                 e.target.closest('.tiket-row').remove();
