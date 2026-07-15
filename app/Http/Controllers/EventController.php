@@ -47,7 +47,7 @@ class EventController extends Controller
         }
 
         // Sort by tanggal_waktu (asc/desc), default asc
-        $sort = $request->get('sort', 'asc');
+        $sort = $request->input('sort', 'asc');
         $query->orderBy('tanggal_waktu', $sort);
 
         $events = $query->paginate(10);
