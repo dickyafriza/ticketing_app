@@ -39,7 +39,7 @@ class EventsExport implements FromCollection, WithHeadings, WithMapping
             $event->tanggal_waktu->format('Y-m-d H:i'),
             $event->lokasi,
             $event->status,
-            $event->orders()->where('status', 'paid')->count(),
+            $event->orders->count(),
         ];
     }
 }

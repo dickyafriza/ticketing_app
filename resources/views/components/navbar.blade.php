@@ -21,7 +21,12 @@
     <img src={{ asset("assets/images/logo_bengkod.svg") }} />
   </div>
   <div class="navbar-center hidden lg:flex">
-    @guest <input class="input w-72" placeholder="Cari Event..." /> @endguest
+    <form action="{{ route('home') }}" method="GET">
+      @if(request('kategori'))
+        <input type="hidden" name="kategori" value="{{ request('kategori') }}">
+      @endif
+      <input type="text" name="search" value="{{ request('search') }}" class="input w-72" placeholder="Cari Event..." />
+    </form>
   </div>
   <div class="navbar-end gap-2">
     @guest
