@@ -82,15 +82,16 @@
         </div>
     </form>
 
-    <!-- Bulk Delete Form Wrapper -->
+    <!-- Bulk Delete Form (Empty container, inputs linked via form attribute) -->
     <form action="{{ route('admin.events.bulkDelete') }}" method="POST" id="bulk-delete-form">
         @csrf
-        
-        <div class="mb-4">
-            <button type="submit" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 text-sm disabled:opacity-50" id="btn-bulk-delete" disabled onclick="return confirm('Yakin ingin menghapus event yang dipilih?');">
-                Hapus Terpilih
-            </button>
-        </div>
+    </form>
+    
+    <div class="mb-4">
+        <button type="submit" form="bulk-delete-form" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 text-sm disabled:opacity-50" id="btn-bulk-delete" disabled onclick="return confirm('Yakin ingin menghapus event yang dipilih?');">
+            Hapus Terpilih
+        </button>
+    </div>
 
         <!-- Events Table -->
         <div class="overflow-x-auto border rounded-lg">
@@ -113,7 +114,7 @@
                     @forelse($events as $event)
                     <tr class="bg-white border-b hover:bg-gray-50">
                         <td class="px-6 py-4">
-                            <input type="checkbox" name="ids[]" value="{{ $event->id }}" class="check-item rounded border-gray-300 text-red-600 focus:ring-red-500">
+                            <input type="checkbox" name="ids[]" value="{{ $event->id }}" form="bulk-delete-form" class="check-item rounded border-gray-300 text-red-600 focus:ring-red-500">
                         </td>
                         <td class="px-6 py-4">
                             <!-- Thumbnail 64x64px -->
@@ -158,7 +159,7 @@
                 </tbody>
             </table>
         </div>
-    </form>
+    <!-- End of Events Table Wrapper -->
 
     <!-- Pagination preserving query params -->
     <div class="mt-4">
