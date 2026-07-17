@@ -38,6 +38,24 @@ class TicketSeeder extends Seeder
                 'harga' => 300000,
                 'stok' => 200,
             ],
+            [
+                'event_id' => 4,
+                'tipe' => 'reguler',
+                'harga' => 100000,
+                'stok' => 250,
+            ],
+            [
+                'event_id' => 5,
+                'tipe' => 'premium',
+                'harga' => 600000,
+                'stok' => 150,
+            ],
+            [
+                'event_id' => 5,
+                'tipe' => 'reguler',
+                'harga' => 200000,
+                'stok' => 300,
+            ],
         ];
         foreach ($tickets as $ticket) {
             Tiket::create($ticket);

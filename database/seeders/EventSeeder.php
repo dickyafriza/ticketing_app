@@ -41,6 +41,24 @@ class EventSeeder extends Seeder
                 'kategori_id' => 3,
                 'gambar' => 'festival_makanan.jpg',
             ],
+            [
+                'user_id' => 1,
+                'judul' => 'Festival Film Indie',
+                'deskripsi' => 'Penayangan film independen dari berbagai kreator lokal.',
+                'tanggal_waktu' => '2024-11-20 18:00:00',
+                'lokasi' => 'Galeri Seni Kota',
+                'kategori_id' => 4, // Festival
+                'gambar' => 'pameran_seni.jpg',
+            ],
+            [
+                'user_id' => 1,
+                'judul' => 'Pementasan Teater Klasik',
+                'deskripsi' => 'Pertunjukan teater klasik karya penulis legendaris.',
+                'tanggal_waktu' => '2024-12-01 19:30:00',
+                'lokasi' => 'Stadion Utama',
+                'kategori_id' => 5, // Pertunjukan Teater
+                'gambar' => 'konser.jpg',
+            ],
         ];
         foreach ($events as $event) {
             Event::create($event);

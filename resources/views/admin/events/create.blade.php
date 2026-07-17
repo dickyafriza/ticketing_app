@@ -56,7 +56,14 @@
             
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Lokasi *</label>
-                <input type="text" name="lokasi" value="{{ old('lokasi') }}" required class="w-full px-4 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                <select name="lokasi" required class="w-full px-4 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                    <option value="">Pilih Lokasi</option>
+                    @foreach($lokasis as $lokasi)
+                        <option value="{{ $lokasi->nama_lokasi }}" {{ old('lokasi') == $lokasi->nama_lokasi ? 'selected' : '' }}>
+                            {{ $lokasi->nama_lokasi }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
             
             <div>

@@ -8,6 +8,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 
+use App\Http\Controllers\LokasiController;
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Event routes
@@ -21,6 +23,11 @@ Route::prefix('admin')->name('categories.')->middleware(['auth', 'verified'])->g
     Route::post('/categories', [CategoryController::class, 'store'])->name('store');
     Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('update');
     Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('destroy');
+});
+
+// Lokasi routes (admin)
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(function () {
+    Route::resource('lokasi', LokasiController::class)->except(['show']);
 });
 
 // Admin Events routes *1*
