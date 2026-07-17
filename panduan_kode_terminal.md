@@ -120,7 +120,16 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
 *(Tautan menuju route `admin.lokasi.index` juga telah ditambahkan pada sidebar layout `admin_layouts.blade.php`)*.
 
 **Penjelasan Controller & Soft Delete (`LokasiController.php`):**
-*   **Create & Update**: Data ditambahkan/diedit melalui mekanisme umum `Lokasi::create(...)` dan `$lokasi->update(...)`.
+*   **Create & Update**: Data ditambahkan/diedit melalui mekanisme umum `Lokasi::create(...)` dan `$lokasi->update(...)`. Pada proses **Update**, jika nama lokasi berubah, kita juga memperbarui semua data teks lokasi lama di tabel `events` agar ikut tersinkronisasi:
+    ```php
+    $oldNama = $lokasi->nama_lokasi;
+    $lokasi->update($request->all());
+    if ($oldNama !== $lokasi->nama_lokasi) {
+        \App\Models\Event::where('lokasi', $oldNama)->update([
+            'lokasi' => $lokasi->nama_lokasi
+        ]);
+    }
+    ```
 *   **Soft Delete (`destroy`)**:
     ```php
     public function destroy(Lokasi $lokasi)
@@ -144,3 +153,58 @@ Perintah terminal terakhir yang digunakan untuk mengkompilasi file dan menerapka
 composer dump-autoload
 php artisan migrate:fresh --seed
 ```
+
+---
+
+## 6. Troubleshooting: Kendala PHP/Apache Tidak Bisa Start & Cara Mengatasinya
+
+Berikut adalah rangkuman kendala umum yang sering terjadi saat pertama kali menjalankan PHP (baik via CLI/Terminal maupun via XAMPP Control Panel) beserta solusinya:
+
+### A. Kendala pada PHP CLI / Terminal (Error: `'php' is not recognized...`)
+*   **Penyebab:** Path folder instalasi PHP (biasanya `C:\xampp\php`) belum didaftarkan di dalam *System Environment Variables* Windows.
+*   **Gejala:** Ketika menjalankan perintah `php artisan ...` atau `php -v` di CMD/PowerShell, muncul pesan error:
+    ```text
+    'php' is not recognized as an internal or external command, operable program or batch file.
+    ```
+*   **Solusi:**
+    1. Buka Windows Search, ketik **"env"** dan pilih **"Edit the system environment variables"**.
+    2. Klik tombol **"Environment Variables..."** di bagian bawah.
+    3. Di bagian *System variables*, cari variabel bernama **`Path`** lalu klik **"Edit..."**.
+    4. Klik **"New"** dan masukkan path instalasi PHP Anda (contoh: `C:\xampp\php`).
+    5. Klik **"OK"** pada semua jendela yang terbuka, lalu **restart/buka ulang terminal** Anda (VSCode / CMD / PowerShell).
+
+### B. Kendala Apache / PHP Tidak Bisa Start di XAMPP (Port Conflict)
+*   **Penyebab:** Port standar HTTP (`80`) atau HTTPS (`443`) yang dibutuhkan oleh Apache di XAMPP telah digunakan oleh aplikasi lain.
+*   **Aplikasi yang sering bentrok:** Skype, VMware, IIS (Internet Information Services), atau layanan internal Windows bernama *World Wide Web Publishing Service (W3SVC)*.
+*   **Gejala:** Saat menekan tombol **"Start"** pada Apache di XAMPP Control Panel, status berubah menjadi hijau sebentar lalu kembali merah, disertai log error seperti:
+    ```text
+    [Apache] Port 80 in use by "Unable to open process" with PID 4!
+    [Apache] Apache shutdown unexpectedly.
+    ```
+*   **Solusi 1 (Mematikan Layanan Windows yang bentrok):**
+    1. Buka Windows Search, ketik **"services.msc"** dan tekan Enter.
+    2. Cari layanan bernama **"World Wide Web Publishing Service"**.
+    3. Klik kanan pada layanan tersebut, pilih **Properties**.
+    4. Ubah *Startup type* menjadi **Manual** atau **Disabled**, lalu klik **Stop** jika sedang berjalan. Klik **Apply** & **OK**.
+    5. Coba jalankan kembali Apache di XAMPP.
+*   **Solusi 2 (Mengubah Port Apache):**
+    1. Buka XAMPP Control Panel.
+    2. Pada baris **Apache**, klik tombol **Config** lalu pilih **Apache (httpd.conf)**.
+    3. Cari baris `Listen 80` dan ubah menjadi `Listen 8080`.
+    4. Cari juga baris `ServerName localhost:80` dan ubah menjadi `ServerName localhost:8080`. Simpan file.
+    5. Klik lagi tombol **Config** lalu pilih **Apache (httpd-ssl.conf)**.
+    6. Cari baris `Listen 443` dan ubah menjadi `Listen 4433`. Simpan file.
+    7. Start Apache. Anda sekarang bisa mengakses web dengan url: `http://localhost:8080/ticketing_app/public`.
+
+### C. Kendala Hak Akses (Permission Denied)
+*   **Penyebab:** XAMPP diinstall di folder sistem (`C:\Program Files` atau langsung di `C:\`) dan tidak mendapat izin menulis file log/temporary tanpa hak administrator.
+*   **Solusi:** Tutup XAMPP Control Panel secara penuh. Cari ikon XAMPP Control Panel, klik kanan dan pilih **"Run as Administrator"**.
+
+### D. Kendala Extension PHP Nonaktif (Error: `PHP Extension ... is missing`)
+*   **Penyebab:** Composer atau Laravel membutuhkan library tertentu (misal: `sqlite3`, `gd`, `zip`, `fileinfo`, `pdo_mysql`) namun masih dinonaktifkan di konfigurasi default PHP.
+*   **Solusi:**
+    1. Di XAMPP Control Panel, klik **Config** pada baris Apache, lalu pilih **PHP (php.ini)**.
+    2. Cari nama extension yang bermasalah (contoh: `;extension=zip` atau `;extension=pdo_mysql`).
+    3. Hapus tanda titik koma (`;`) di depan extension tersebut untuk mengaktifkannya (ubah menjadi `extension=zip` atau `extension=pdo_mysql`).
+    4. Simpan file `php.ini` lalu restart service Apache / MySQL Anda.
+

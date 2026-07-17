@@ -16,7 +16,7 @@ class LokasiSeeder extends Seeder
         DB::table('lokasi')->insertOrIgnore([
             [
                 'id' => 1,
-                'nama_lokasi' => 'Stadion Utama',
+                'nama_lokasi' => 'Stadion Besar',
                 'aktif' => 'Y',
                 'created_at' => now(),
                 'updated_at' => now(),

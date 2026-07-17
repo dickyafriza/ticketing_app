@@ -112,5 +112,9 @@ Gunakan akun berikut untuk masuk ke dashboard:
     Jalankan perintah: `composer dump-autoload`
 *   **Error: Gambar Event tidak muncul**
     Pastikan folder `public/storage` sudah terbentuk. Jika bermasalah, hapus folder shortcut `public/storage` secara manual terlebih dahulu, lalu jalankan kembali: `php artisan storage:link`.
-*   **Error database connection refused**
-    Pastikan MySQL di XAMPP / Laragon sudah menyala (running).
+*   **Error database connection refused / MySQL / PHP Apache gagal start**
+    1. Pastikan MySQL di XAMPP / Laragon sudah menyala (running).
+    2. Jika Apache gagal start karena *Port Conflict* (biasanya port 80/443 dipakai aplikasi lain), silakan matikan *World Wide Web Publishing Service* atau ubah port Apache.
+    3. Jika perintah `php` di terminal tidak dikenali (*not recognized*), daftarkan path PHP (misal `C:\xampp\php`) ke *Environment Variables* Windows.
+    4. Selengkapnya mengenai kendala ini dan cara solusinya, silakan baca **[Panduan Kode Terminal - Bagian Troubleshooting](file:///c:/xampp/htdocs/ticketing_app/panduan_kode_terminal.md#6-troubleshooting-kendala-phpapache-tidak-bisa-start--cara-mengatasinya)**.
+

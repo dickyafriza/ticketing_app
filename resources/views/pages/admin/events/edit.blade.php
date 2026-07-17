@@ -76,7 +76,14 @@
                     <span class="text-sm font-medium text-gray-700">Lokasi</span>
                     <span class="text-red-500">*</span>
                 </label>
-                <input type="text" name="lokasi" value="{{ old('lokasi', $event->lokasi) }}" required class="input input-bordered w-full px-4 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500 text-sm">
+                <select name="lokasi" required class="select select-bordered w-full px-4 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500 text-sm">
+                    <option value="">Pilih Lokasi</option>
+                    @foreach($lokasis as $lok)
+                        <option value="{{ $lok->nama_lokasi }}" {{ old('lokasi', $event->lokasi) == $lok->nama_lokasi ? 'selected' : '' }}>
+                            {{ $lok->nama_lokasi }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
             
             <!-- Tanggal & Waktu -->

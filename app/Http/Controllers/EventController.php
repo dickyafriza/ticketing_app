@@ -117,7 +117,7 @@ class EventController extends Controller
     public function create()
     {
         $kategoris = Kategori::all();
-        $lokasis = \App\Models\Lokasi::where('aktif', 'Y')->get();
+        $lokasis = \App\Models\Lokasi::where('aktif', 'Y')->orderBy('id', 'asc')->get();
         return view('pages.admin.events.create', compact('kategoris', 'lokasis'));
     }
 
@@ -188,7 +188,7 @@ class EventController extends Controller
 
         $event->load('tikets');
         $kategoris = Kategori::all();
-        $lokasis = \App\Models\Lokasi::where('aktif', 'Y')->get();
+        $lokasis = \App\Models\Lokasi::where('aktif', 'Y')->orderBy('id', 'asc')->get();
         $hasSales = $event->hasSales();
         return view('pages.admin.events.edit', compact('event', 'kategoris', 'lokasis', 'hasSales'));
     }

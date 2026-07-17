@@ -13,7 +13,7 @@ class LokasiController extends Controller
         $lokasis = Lokasi::when($search, function ($query, $search) {
                 return $query->where('nama_lokasi', 'like', "%{$search}%");
             })
-            ->orderBy('id', 'desc')
+            ->orderBy('id', 'asc')
             ->paginate(10);
 
         return view('pages.admin.lokasi.index', compact('lokasis'));
@@ -48,7 +48,18 @@ class LokasiController extends Controller
             'aktif' => 'required|in:Y,N',
         ]);
 
+        // 1. Simpan nama lokasi lama sebelum diperbarui
+        $oldNama = $lokasi->nama_lokasi;
+
+        // 2. Perbarui data lokasi
         $lokasi->update($request->all());
+
+        // 3. Sinkronisasikan nama lokasi lama ke nama lokasi baru pada semua Event terkait
+        if ($oldNama !== $lokasi->nama_lokasi) {
+            \App\Models\Event::where('lokasi', $oldNama)->update([
+                'lokasi' => $lokasi->nama_lokasi
+            ]);
+        }
 
         return redirect()->route('admin.lokasi.index')->with('success', 'Lokasi berhasil diperbarui.');
     }
